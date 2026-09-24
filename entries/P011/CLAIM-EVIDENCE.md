@@ -62,6 +62,12 @@ This is agent-assisted source reading, not an independent human review.
   toolchain with warnings as errors. The edited `PerronExistence.lean` has not
   been built, nor has the removal of a no-op `dsimp` from `Certificates.lean`.
   The downstream degradation statements are unchanged.
+- Target API migration: uses of the deprecated finite-function `stdSimplex` API
+  and `Set.mem_setOf_eq` were replaced by file-only edits in
+  `PerronExistence.lean`, `Gordan.lean`, `Attainment.lean` and
+  `Composition.lean`
+  ([record](../../preparation/P011-TARGET-API-MIGRATION.json)). These edits
+  have not been compiled. No selected statement changed.
 - Not selected: the pointwise price-cone identities, Prop 3.6, Thm 3.9, the
   general-λ and spectral actuation forms of Thms 5.4 and 5.5, and the
   hand-proved extensions of Remark 5.8.

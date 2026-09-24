@@ -15,10 +15,10 @@ noncomputable def normalizedMulVec [Fintype ι]
     (P : Matrix ι ι ℝ) (x : ι → ℝ) : ι → ℝ :=
   fun i ↦ P.mulVec x i / totalOutput P x
 
-theorem mulVec_pos_of_positive_of_mem_stdSimplex
+theorem mulVec_pos_of_positive_of_mem_simplex
     [Fintype ι] [Nonempty ι]
     {P : Matrix ι ι ℝ} (hP : IsPositiveMatrix P)
-    {x : ι → ℝ} (hx : x ∈ stdSimplex ℝ ι) (i : ι) :
+    {x : ι → ℝ} (hx : x ∈ PositivePerron.simplex ι) (i : ι) :
     0 < P.mulVec x i := by
   obtain ⟨j, hj⟩ : ∃ j, 0 < x j := by
     by_contra h
@@ -30,25 +30,25 @@ theorem mulVec_pos_of_positive_of_mem_stdSimplex
   exact Finset.sum_pos' (fun k _ ↦ mul_nonneg (le_of_lt (hP i k)) (hx.1 k))
     ⟨j, Finset.mem_univ j, mul_pos (hP i j) hj⟩
 
-theorem totalOutput_pos_of_positive_of_mem_stdSimplex
+theorem totalOutput_pos_of_positive_of_mem_simplex
     [Fintype ι] [Nonempty ι]
     {P : Matrix ι ι ℝ} (hP : IsPositiveMatrix P)
-    {x : ι → ℝ} (hx : x ∈ stdSimplex ℝ ι) :
+    {x : ι → ℝ} (hx : x ∈ PositivePerron.simplex ι) :
     0 < totalOutput P x := by
   apply Finset.sum_pos
   · intro i _
-    exact mulVec_pos_of_positive_of_mem_stdSimplex hP hx i
+    exact mulVec_pos_of_positive_of_mem_simplex hP hx i
   · exact Finset.univ_nonempty
 
-theorem normalizedMulVec_mem_stdSimplex
+theorem normalizedMulVec_mem_simplex
     [Fintype ι] [Nonempty ι]
     {P : Matrix ι ι ℝ} (hP : IsPositiveMatrix P)
-    {x : ι → ℝ} (hx : x ∈ stdSimplex ℝ ι) :
-    normalizedMulVec P x ∈ stdSimplex ℝ ι := by
-  have htot := totalOutput_pos_of_positive_of_mem_stdSimplex hP hx
+    {x : ι → ℝ} (hx : x ∈ PositivePerron.simplex ι) :
+    normalizedMulVec P x ∈ PositivePerron.simplex ι := by
+  have htot := totalOutput_pos_of_positive_of_mem_simplex hP hx
   constructor
   · intro i
-    exact div_nonneg (le_of_lt (mulVec_pos_of_positive_of_mem_stdSimplex hP hx i))
+    exact div_nonneg (le_of_lt (mulVec_pos_of_positive_of_mem_simplex hP hx i))
       (le_of_lt htot)
   · simp only [normalizedMulVec, ← Finset.sum_div, totalOutput]
     exact div_self (ne_of_gt htot)
@@ -56,7 +56,7 @@ theorem normalizedMulVec_mem_stdSimplex
 theorem continuous_normalizedMulVecOn
     [Fintype ι] [Nonempty ι]
     {P : Matrix ι ι ℝ} (hP : IsPositiveMatrix P) :
-    ContinuousOn (normalizedMulVec P) (stdSimplex ℝ ι) := by
+    ContinuousOn (normalizedMulVec P) (PositivePerron.simplex ι) := by
   rw [continuousOn_pi]
   intro i
   apply ContinuousOn.div
@@ -65,7 +65,7 @@ theorem continuous_normalizedMulVecOn
     unfold totalOutput
     fun_prop
   · intro x hx
-    exact ne_of_gt (totalOutput_pos_of_positive_of_mem_stdSimplex hP hx)
+    exact ne_of_gt (totalOutput_pos_of_positive_of_mem_simplex hP hx)
 
 /-- Perron existence for an entrywise-positive finite real matrix, via the
 independent Collatz–Wielandt proof in `PositivePerron`. -/
@@ -124,13 +124,14 @@ for existence of a normalized nonnegative real eigenvector. -/
 theorem nonnegativeMatrix_exists_normalizedNonnegative_eigenvector
     [Fintype ι] [DecidableEq ι] [Nonempty ι]
     (A : Matrix ι ι ℝ) (hA : ∀ i j, 0 ≤ A i j) :
-    ∃ rho : ℝ, ∃ v : ι → ℝ, v ∈ stdSimplex ℝ ι ∧ A.mulVec v = rho • v := by
+    ∃ rho : ℝ, ∃ v : ι → ℝ, v ∈ PositivePerron.simplex ι ∧ A.mulVec v = rho • v := by
   let u : ℕ → (ι → ℝ) := fun n ↦ regularizedPerronVector A hA n
-  have huS : ∀ n, u n ∈ stdSimplex ℝ ι := by
+  have huS : ∀ n, u n ∈ PositivePerron.simplex ι := by
     intro n
     exact ⟨fun i ↦ le_of_lt ((regularizedPerronVector_spec A hA n).1.1 i),
       (regularizedPerronVector_spec A hA n).1.2⟩
-  obtain ⟨v, hvS, φ, hφ, hvlim⟩ := (isCompact_stdSimplex ℝ ι).tendsto_subseq huS
+  obtain ⟨v, hvS, φ, hφ, hvlim⟩ :=
+    (PositivePerron.isCompact_simplex (ι := ι)).tendsto_subseq huS
   have hεbase : Filter.Tendsto (fun n : ℕ ↦ ((n : ℝ))⁻¹)
       Filter.atTop (nhds 0) := tendsto_inv_atTop_nhds_zero_nat
   have hε : Filter.Tendsto (fun n ↦ ((((φ n) + 1 : ℕ) : ℝ))⁻¹)
@@ -187,7 +188,7 @@ theorem irreducibleNonnegative_eigenvector_strictlyPositive
     [Fintype ι] [DecidableEq ι] [Nonempty ι]
     {A : Matrix ι ι ℝ} (hA : ∀ i j, 0 ≤ A i j)
     (hirr : A.IsIrreducible) {v : ι → ℝ} {rho : ℝ}
-    (hvS : v ∈ stdSimplex ℝ ι) (heig : A.mulVec v = rho • v) :
+    (hvS : v ∈ PositivePerron.simplex ι) (heig : A.mulVec v = rho • v) :
     StrictlyPositive v := by
   obtain ⟨j, hj⟩ : ∃ j, 0 < v j := by
     by_contra h

@@ -1,0 +1,55 @@
+{
+  "kind": "STATIC_TARGET_API_MIGRATION_NOT_COMPILED",
+  "entry": "P011",
+  "also_affects": [
+    "P011A (shares proofs/MAFComposition/*)"
+  ],
+  "created_utc": "2026-09-24T23:16:16.025221+00:00",
+  "author": "Michael Mislan",
+  "license": "Apache-2.0",
+  "lean_executed": false,
+  "method": "File-only. Deprecated declarations were found by scanning every @[deprecated] declaration in the pinned Mathlib (065356127b1d), Batteries and Lean v4.35.0-rc2 Init/Std sources and matching them against the 45-module P011 Solution closure; qualified and unqualified lemma names were also checked for existence in those sources. The lakefile sets warningAsError, so each deprecated use would fail the build.",
+  "findings": {
+    "deprecated_declarations_in_closure": [
+      "stdSimplex, isCompact_stdSimplex, convex_stdSimplex, single_mem_stdSimplex (deprecated 2026-08-29 in favour of the StdSimplex type; no drop-in Set replacement)",
+      "Set.mem_setOf_eq (deprecated 2026-07-09; alias of Set.mem_ofPred_eq, the rename already applied in the passing P012 migration)"
+    ],
+    "deprecated_tactics_in_closure": "none (push_neg already migrated to push Not; no refine'/cases'/induction'/admit/cutsat/native_decide)",
+    "missing_names": "none found",
+    "set_option_in_closure_after_edit": "none"
+  },
+  "changes": [
+    {
+      "path": "proofs/DegradationControl/PerronExistence.lean",
+      "before_sha256": "09649b6d4108989fa156134ce05ca83e20ef53726d6e4ddb17ed2eb843c33621",
+      "after_sha256": "455702f18787796f81cbfe1eef89829e613fb4d8d60806211a30df9c8439ba1c",
+      "change": "stdSimplex ℝ ι -> PositivePerron.simplex ι (the same set, defined and proved compact in the already-compiled PositivePerron.lean); isCompact_stdSimplex -> PositivePerron.isCompact_simplex; three local lemma names *_mem_stdSimplex -> *_mem_simplex (no references outside this file). All downstream uses of the eigenvector theorem's simplex membership are .1/.2 projections, so they are unaffected. Theorem statements otherwise unchanged."
+    },
+    {
+      "path": "proofs/MAFComposition/Gordan.lean",
+      "before_sha256": "c3334f5aae4e566637db73d73674d4ebaaa2ea4b1aeb61c12a8a3faa4cb6f56f",
+      "after_sha256": "06ac9e3d4689aa14e5682cded29cbfa28a74fb7cf13c17df18f1f62bce92bc66",
+      "change": "Added MAFComposition.simplex with convex_simplex (proof text of Mathlib's convex_stdSimplex at the pinned rev, specialised to ℝ), isCompact_simplex (proof text of the compiled PositivePerron.isCompact_simplex) and single_mem_simplex (pattern from compiled PositivePerron). Removed `set_option linter.deprecated false in` and used the local set in not_primal_implies_strictColumnDual. Selected statements unchanged."
+    },
+    {
+      "path": "proofs/MAFComposition/Attainment.lean",
+      "before_sha256": "f1a32db824bf69fabfa0d7ce9f14225d4a9632683ced0c34f6ed8cdbb07283b3",
+      "after_sha256": "ef57979284a07131948e7e13585608a16f45c6e960539870f56f87b2bc3b71bd",
+      "change": "stdSimplex/isCompact_stdSimplex/single_mem_stdSimplex -> MAFComposition.simplex/isCompact_simplex/single_mem_simplex in a private set and proof; Set.mem_setOf_eq -> Set.mem_ofPred_eq; docstring wording."
+    },
+    {
+      "path": "proofs/MAFComposition/Composition.lean",
+      "before_sha256": "a90991ee9a6851d26004a71a10cebdd478b73ebe91e548258651d23a023618c9",
+      "after_sha256": "bbbe271f9c603a0efdded98cd9309d2e69227ff87a995ee506a10ec14706914c",
+      "change": "Set.mem_setOf_eq -> Set.mem_ofPred_eq in one simp only call."
+    }
+  ],
+  "unchanged_but_pending": {
+    "proofs/DegradationControl/Certificates.lean": "62013e957a089226eb2d86995168e02de4b02055a2b277123440b9e0348427df (no-op dsimp removal recorded in P011-PERRON-REPLACEMENT.json; not rebuilt)"
+  },
+  "compile_status": "NOT COMPILED. Static checks cannot detect simp normal-form or elaboration changes; the P006 and P012 migrations needed several such compile-driven repairs. 38 of the 45 closure modules have never been built on the target toolchain (all 12 MAFComposition, 15 of 16 DegradationControl, 11 of 16 AutocatalyticCS; PositivePerron and the five AutocatalyticCS modules shared with P003 have).",
+  "frozen_candidates_affected": [
+    "P011-submit-ready (superseded by P011-submit-ready-r2)",
+    "P011A-submit-ready (its MAFComposition sources still carry the deprecated uses)"
+  ]
+}

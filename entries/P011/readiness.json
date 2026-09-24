@@ -28,7 +28,8 @@
   ],
   "redistribution": "THIRD_PARTY_SOURCE_REPLACED_NOT_IMPORTED",
   "redistribution_evidence": "preparation/P011-PERRON-REPLACEMENT.json",
-  "disposition": "PREPARED_ALL_THREE_PROBLEMS_REPLACEMENT_NOT_COMPILED",
+  "disposition": "PREPARED_ALL_THREE_PROBLEMS_REPLACEMENT_AND_API_MIGRATION_NOT_COMPILED",
   "split_entry": "entries/P011A",
-  "claim_evidence": "entries/P011/CLAIM-EVIDENCE.md"
+  "claim_evidence": "entries/P011/CLAIM-EVIDENCE.md",
+  "api_migration_evidence": "preparation/P011-TARGET-API-MIGRATION.json"
 }

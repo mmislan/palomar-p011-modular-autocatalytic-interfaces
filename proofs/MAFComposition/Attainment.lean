@@ -4,7 +4,7 @@ import proofs.MAFComposition.Threshold
 /-!
 Finite-dimensional attainment bridge.  Once source-domain arguments provide a
 finite upper bound on feasible thresholds, the maximum in `Network.IsMAF` is
-not an extra assumption: normalization to the standard simplex and compactness
+not an extra assumption: normalization to the probability simplex and compactness
 produce an attained MAF.
 -/
 
@@ -19,16 +19,16 @@ def Network.ThresholdBoundedAbove (N : Network ι κ) (U : ℝ) : Prop :=
 
 private def normalizedFeasiblePairs (N : Network ι κ) (U : ℝ) :
     Set (ℝ × (κ → ℝ)) :=
-  {z | z.1 ∈ Set.Icc 0 U ∧ z.2 ∈ stdSimplex ℝ κ ∧
+  {z | z.1 ∈ Set.Icc 0 U ∧ z.2 ∈ simplex κ ∧
     ∀ i, z.1 * N.input.mulVec z.2 i ≤ N.output.mulVec z.2 i}
 
 omit [Fintype ι] [Nonempty κ] in
 private theorem normalizedFeasiblePairs_compact (N : Network ι κ) (U : ℝ) :
     IsCompact (normalizedFeasiblePairs N U) := by
-  let base : Set (ℝ × (κ → ℝ)) := Set.Icc 0 U ×ˢ stdSimplex ℝ κ
+  let base : Set (ℝ × (κ → ℝ)) := Set.Icc 0 U ×ˢ simplex κ
   let constraints : Set (ℝ × (κ → ℝ)) :=
     ⋂ i, {z | z.1 * N.input.mulVec z.2 i ≤ N.output.mulVec z.2 i}
-  have hbase : IsCompact base := isCompact_Icc.prod (isCompact_stdSimplex ℝ κ)
+  have hbase : IsCompact base := isCompact_Icc.prod (isCompact_simplex (κ := κ))
   have hconstraints : IsClosed constraints := by
     apply isClosed_iInter
     intro i
@@ -37,7 +37,7 @@ private theorem normalizedFeasiblePairs_compact (N : Network ι κ) (U : ℝ) :
     · fun_prop
   have heq : normalizedFeasiblePairs N U = base ∩ constraints := by
     ext z
-    simp only [normalizedFeasiblePairs, base, constraints, Set.mem_setOf_eq,
+    simp only [normalizedFeasiblePairs, base, constraints, Set.mem_ofPred_eq,
       Set.mem_inter_iff, Set.mem_prod, Set.mem_Icc, Set.mem_iInter]
     tauto
   rw [heq]
@@ -84,7 +84,7 @@ theorem exists_isMAF_of_bounded
     let x : κ → ℝ := Pi.single r₀ 1
     refine ⟨(0, x), ?_⟩
     refine ⟨⟨le_rfl, hU⟩, ?_, ?_⟩
-    · simpa [x] using single_mem_stdSimplex ℝ r₀
+    · simpa [x] using single_mem_simplex r₀
     · intro i
       have hi : 0 ≤ N.output.mulVec x i := by
         simpa [x] using hB i r₀
@@ -103,7 +103,7 @@ theorem exists_isMAF_of_bounded
       let s : ℝ := ∑ r, x r
       have hs : 0 < s := sum_pos_of_nonnegative_ne_zero hx hxne
       let y : κ → ℝ := fun r => x r / s
-      have hySimplex : y ∈ stdSimplex ℝ κ := by
+      have hySimplex : y ∈ simplex κ := by
         refine ⟨fun r => div_nonneg (hx r) (le_of_lt hs), ?_⟩
         change (∑ r, x r / s) = 1
         rw [← Finset.sum_div]

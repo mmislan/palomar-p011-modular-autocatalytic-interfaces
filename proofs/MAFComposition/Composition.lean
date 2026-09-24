@@ -60,7 +60,7 @@ theorem strictPriceAt_parallel_iff (N₁ : Network ι κ) (N₂ : Network ι ρ)
     (N₁.parallel N₂).StrictPriceAt q ↔
       ∃ p, p ∈ N₁.priceCone q ∩ N₂.priceCone q := by
   rw [strictPriceAt_iff_exists_obstruction]
-  simp only [Network.priceCone, Set.mem_inter_iff, Set.mem_setOf_eq]
+  simp only [Network.priceCone, Set.mem_inter_iff, Set.mem_ofPred_eq]
   exact exists_congr fun p =>
     strictObstruction_parallel_iff N₁.input N₁.output N₂.input N₂.output q p
 
