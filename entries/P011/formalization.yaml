@@ -1,0 +1,169 @@
+{
+  "version": "v0.4",
+  "project": {
+    "name": "MAF composition criteria, exact enumeration of child-selection autocatalytic cores, and degradation regions of linear diluted source networks",
+    "description": "How does the maximum amplification factor (MAF) compose, can child-selection autocatalytic cores be recovered from ordinary cores, and how does species-specific degradation decide linear diluted growth? For networks with nonnegative inputs and attained MAFs, adding a reaction with nonnegative input, aggregating species by a nonnegative matrix, or shared-species coupling raises the MAF (for coupling, above both component MAFs) exactly when, at some threshold q above the old value, the result has no strict price: a nonnegative species price p with p·output < q·(p·input) in every reaction. A block direct sum attains the larger component MAF. For N1 (A → B, B → 4A) and N2 (A → 4B, B → A), N1, N2 and N1‖N1 have MAF 2 but N2‖N1 has MAF 4, so component MAFs do not determine coupled MAFs. Given a complete list of ordinary-core anchor matchings, each unique on its vertex set, toggling anchors along disjoint alternating boundary paths and filtering with a certified rational semipositivity test returns exactly the child-selection cores, the minimal autocatalytic matching edge sets. For the linear diluted source matrix A of nonnegative unary reactions with irreducible source graph and degradation d ≥ 0, A − diag(d) has positive, zero or negative real spectral bound exactly when d is componentwise strictly below, equal to, or strictly above the projective degradation (Av)_i/v_i of some positive v. For Metzler A, degradation on actuated species alone yields positive v with (A − diag(d))v componentwise negative exactly when the unactuated block has such a v.",
+    "authors": [
+      "Michael Mislan"
+    ],
+    "responsible_maintainers": [
+      "Michael Mislan"
+    ],
+    "license": "Apache-2.0"
+  },
+  "classification": {
+    "arxiv": [
+      "q-bio.MN",
+      "math.CO"
+    ],
+    "msc2020": [
+      "92C42",
+      "15A39",
+      "05C70",
+      "15B48"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Exact interfaces for modular autocatalytic reaction networks: amplification prices, catalyst-aware cores, degradation onset, and boundary traces",
+      "authors": [
+        "Michael Mislan"
+      ],
+      "type": "paper",
+      "relationship": "formalizes",
+      "location": "papers/P011/paper.pdf",
+      "note": "Companion manuscript, Theorem 3.5 (i)-(iv), Theorem 3.8, Theorem 4.7 with Construction 4.6, Theorem 5.4 (three sign cases) and Theorem 5.5 (certificate form). Numbers follow the LaTeX source ordering."
+    },
+    {
+      "title": "Topological bounds on the dynamical growth rate of chemical reaction networks",
+      "authors": [
+        "Praful Gagrani",
+        "Jiwei Wang",
+        "Yannick De Decker",
+        "David Lacoste"
+      ],
+      "type": "article",
+      "relationship": "background",
+      "id": "doi:10.48550/arXiv.2603.02627",
+      "location": "https://arxiv.org/abs/2603.02627",
+      "note": "arXiv preprint arXiv:2603.02627 (2026). Introduces the maximum amplification factor for reaction networks. The companion manuscript reports that this work names composition rules for adding reactions, merging species and coupling motifs as an open direction (literature problem 13). This review did not check which section of the preprint states that direction."
+    },
+    {
+      "title": "Autocatalytic cores in reaction networks with explicit catalysis",
+      "authors": [
+        "Richard Golnik",
+        "Thomas Gatter",
+        "Peter F. Stadler",
+        "Nicola Vassena"
+      ],
+      "type": "article",
+      "relationship": "background",
+      "id": "doi:10.48550/arXiv.2603.02770",
+      "location": "https://arxiv.org/abs/2603.02770",
+      "note": "arXiv preprint arXiv:2603.02770 [math.CO] (2026). Child-selection cores are defined in Definition 3.4, and Example 3.3 separates them from ordinary cores. Literature problem 14 asks whether the finer child-selection cores can be obtained from ordinary autocatalytic cores. This review did not check where the preprint poses that question."
+    },
+    {
+      "title": "Autocatalytic cores in the diluted regime: classification and properties",
+      "authors": [
+        "Praneet Nandan",
+        "Philippe Nghe",
+        "Jérémie Unterberger"
+      ],
+      "type": "article",
+      "relationship": "background",
+      "id": "doi:10.1007/s00285-026-02357-7",
+      "location": "https://doi.org/10.1007/s00285-026-02357-7",
+      "note": "J. Math. Biol. 92 (2026), article 36; arXiv:2507.15546. Literature problem 15: dynamical autocatalysis under arbitrary species-specific degradation."
+    }
+  ],
+  "status": {
+    "scope": "Eight declarations of Registry/P011/Challenge.lean. MAF statements: finite species/reaction types, nonnegative input matrices, attained MAFs as hypotheses (IsMAF), entrywise nonnegative aggregation matrix, nonnegative added input column; scalarNoncompositionality for four explicit feasibility predicates. Core enumeration: complete ordinary-core anchor list, unique anchor matchings, exhaustive species and reaction orders, certified rational checker; autocatalyticity is rational semipositivity; cores minimal under edge-set inclusion. Degradation: linear diluted source model only — finite nonempty species type, nonnegative unary reactions with irreducible source adjacency, nonnegative degradation vector, three sign cases via real spectral bound; partial actuation for Metzler matrices in positive-vector certificate form.",
+    "sorry_count": 0,
+    "sorry_in_definitions": 0,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "automation": {
+    "methods": [
+      {
+        "method": "agent",
+        "tool_setup": "AI-assisted source migration, metadata preparation and statement packaging using Codex.",
+        "framework": "Codex",
+        "models": []
+      }
+    ],
+    "notes": "AI-assisted development and submission preparation. Complete historical model identifiers are not available in the preserved records and are not inferred. Current source/statement review is agent-assisted; no independent human mathematical review is asserted."
+  },
+  "review": {
+    "status": "agent-reviewed",
+    "notes": "Source-reading correspondence review in entries/P011/CLAIM-EVIDENCE.md. The third-party fixed-point dependency was replaced by an independent Perron argument (proofs/DegradationControl/PositivePerron.lean; preparation/P011-PERRON-REPLACEMENT.json); no DegradationControl/External file is shipped or imported. PositivePerron.lean compiled standalone on the target toolchain; PerronExistence and the full Solution closure have not been built, and three closure files use the deprecated stdSimplex API. Target Solution, Comparator and kernel checks are pending. Agent-assisted, not an independent human review."
+  },
+  "fidelity": {
+    "divergences": "MAF is used only in attained form: IsMAF a means feasibility at a and a ≥ every feasible threshold; attainment (manuscript Prop. 3.6) is a hypothesis, not derived, and no supremum is formalized. Theorem 3.5 is selected only as strict-increase / strict-synergy equivalences; the manuscript's pointwise price-cone identities and the non-strict inequalities α ≤ β and max a b ≤ c are not selected. reactionEdit requires only the added input column to be nonnegative; the added output column is arbitrary. scalarNoncompositionality is stated for four explicitly written feasibility predicates, not for instances of the Network structure and Network.parallel; the 'no scalar composition rule' conclusion is an informal consequence. The abstract's criterion 'the result has no strict price at q' restates the formal right-hand sides, which are written via the original networks' price cones: N.priceCone q ∩ reactionHalfspace a b q (addition), {p ≥ 0 : Matrix.vecMul p C ∈ N.priceCone q} (aggregation, using C ≥ 0), and N₁.priceCone q ∩ N₂.priceCone q (coupling). Each equals the price cone of the resulting network by unfolding definitions; this identity is not itself a selected declaration. Child-selection autocatalyticity is rational semipositivity (∃ v ≥ 0, v ≠ 0, Mv > 0 over ℚ) of the net-stoichiometry matrix of an IndexedMatching; the real/rational bridge is not part of the selected statement. Anchor completeness (every OrdinaryCore is the support of a listed anchor) and uniqueness of each anchor matching on its vertex set are hypotheses, not derived; the manuscript cites uniqueness from the source literature. The checker is an input structure carrying positive and negative rational certificates; the enumerator's output is exact relative to it. Child-selection cores are minimal under matching-edge-set inclusion, whereas OrdinaryCore uses the product order on (species, reactions) supports (manuscript Example 4.3). The literature question (Golnik, Gatter, Stadler, Vassena) is informal; the entry answers it conditionally via this enumerator. Complexity and benchmark claims of manuscript Section 4 are not formalized. Problem 15 (Nandan, Nghe, Unterberger) concerns dynamical autocatalysis under arbitrary species-specific degradation; the formal statements concern only the linear diluted source matrix reactionPart rs − diag d built from unary reactions with nonnegative rates and products and an irreducible source adjacency, not nonlinear networks or mass-action kinetics. Growth/criticality/extinction are expressed through a real spectral bound (real eigenvalue dominating real parts of all complex eigenvalues of the complexified matrix), not through ODE trajectories; only the three sign cases of Thm 5.4 are selected, not the general-λ form. partialActuation is the certificate form of Thm 5.5 for an arbitrary Metzler matrix; the spectral form and the Remark 5.8 extensions are not selected."
+  },
+  "alignment": {
+    "namespace": "MAFComposition; DegradationControl; AutocatalyticCS",
+    "statements": [
+      {
+        "source": "Companion manuscript, Theorem 3.5(i), reaction addition",
+        "lean": "MAFComposition.reactionEdit",
+        "module": "Registry.P011.Challenge",
+        "status": "adapted",
+        "note": "Strict-increase equivalence only. Assumes nonnegative network input, a nonnegative added input column and attained MAFs alpha and beta."
+      },
+      {
+        "source": "Companion manuscript, Theorem 3.5(ii), species aggregation",
+        "lean": "MAFComposition.aggregate",
+        "module": "Registry.P011.Challenge",
+        "status": "adapted",
+        "note": "Strict-increase equivalence through lifted prices. Assumes an entrywise nonnegative aggregation matrix, nonnegative input and attained MAFs."
+      },
+      {
+        "source": "Companion manuscript, Theorem 3.5(iii), disjoint union",
+        "lean": "MAFComposition.directSum",
+        "module": "Registry.P011.Challenge",
+        "status": "proved",
+        "note": "The block direct sum has attained MAF max a b, given nonnegative inputs and attained component MAFs a and b."
+      },
+      {
+        "source": "Companion manuscript, Theorem 3.5(iv), shared-species coupling",
+        "lean": "MAFComposition.parallel",
+        "module": "Registry.P011.Challenge",
+        "status": "adapted",
+        "note": "Strict-synergy equivalence with one common strict price. Assumes nonnegative inputs and attained MAFs a, b and c."
+      },
+      {
+        "source": "Companion manuscript, Theorem 3.8",
+        "lean": "MAFComposition.scalarNoncompositionality",
+        "module": "Registry.P011.Challenge",
+        "status": "adapted",
+        "note": "Exact thresholds 2, 2, 2 and 4 for the explicitly written feasibility predicates of N1, N2, N1||N1 and N2||N1."
+      },
+      {
+        "source": "Companion manuscript, Theorem 5.4 (three sign cases)",
+        "lean": "DegradationControl.sourceNetwork_arbitraryDegradationRegions",
+        "module": "Registry.P011.Challenge",
+        "status": "adapted",
+        "note": "Growth, critical and extinction regions via projective degradation of a positive vector; the general-lambda form is not selected."
+      },
+      {
+        "source": "Companion manuscript, Theorem 5.5 (certificate form)",
+        "lean": "DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate",
+        "module": "Registry.P011.Challenge",
+        "status": "adapted",
+        "note": "Partial stabilizability iff the unactuated block has a strict extinction certificate; spectral form not selected."
+      },
+      {
+        "source": "Companion manuscript, Theorem 4.7 with Construction 4.6",
+        "lean": "AutocatalyticCS.sourceDirectCSCoreEnum_exact",
+        "module": "Registry.P011.Challenge",
+        "status": "proved",
+        "note": "An edge set is in the enumerator output iff it is an inclusion-minimal autocatalytic edge set. Assumes anchor completeness, unique anchor matchings, exhaustive orders and a certified checker."
+      }
+    ]
+  },
+  "acknowledgements": "Mathlib. An earlier development used a third-party finite-dimensional fixed-point port; it is no longer imported and is not distributed."
+}

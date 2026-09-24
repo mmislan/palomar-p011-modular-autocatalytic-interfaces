@@ -1,0 +1,34 @@
+{
+  "paper": "P011",
+  "problems": [
+    13,
+    14,
+    15
+  ],
+  "historical_verification": "PASS",
+  "challenge": "COMPILES_TARGET_STATEMENT_ONLY",
+  "solution": "DRAFT_NOT_VERIFIED",
+  "target_compilation": "NOT_RUN",
+  "comparator": "NOT_RUN",
+  "independent_kernels": "NOT_RUN",
+  "statement_fidelity": "SOURCE_READ_AGENT_REVIEWED_VERIFICATION_PENDING",
+  "metadata_review": "AGENT_PREPARED",
+  "scope_gap": false,
+  "publication": "NOT_AUTHORIZED",
+  "submission": "NOT_AUTHORIZED",
+  "selected_declarations": [
+    "MAFComposition.reactionEdit",
+    "MAFComposition.aggregate",
+    "MAFComposition.directSum",
+    "MAFComposition.parallel",
+    "MAFComposition.scalarNoncompositionality",
+    "DegradationControl.sourceNetwork_arbitraryDegradationRegions",
+    "DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate",
+    "AutocatalyticCS.sourceDirectCSCoreEnum_exact"
+  ],
+  "redistribution": "THIRD_PARTY_SOURCE_REPLACED_NOT_IMPORTED",
+  "redistribution_evidence": "preparation/P011-PERRON-REPLACEMENT.json",
+  "disposition": "PREPARED_ALL_THREE_PROBLEMS_REPLACEMENT_NOT_COMPILED",
+  "split_entry": "entries/P011A",
+  "claim_evidence": "entries/P011/CLAIM-EVIDENCE.md"
+}

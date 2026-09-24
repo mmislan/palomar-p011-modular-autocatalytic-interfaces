@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Registry.P011.Challenge",
+  "solution_module": "Registry.P011.Solution",
+  "theorem_names": [
+    "MAFComposition.reactionEdit",
+    "MAFComposition.aggregate",
+    "MAFComposition.directSum",
+    "MAFComposition.parallel",
+    "MAFComposition.scalarNoncompositionality",
+    "DegradationControl.sourceNetwork_arbitraryDegradationRegions",
+    "DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate",
+    "AutocatalyticCS.sourceDirectCSCoreEnum_exact"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

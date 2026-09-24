@@ -1,0 +1,89 @@
+{
+  "receipt": "problem_workspaces/RAF_MAF_composition_edit_calculus/verification/Main.verify.json",
+  "receipt_sha256": "9d5f7adc8fb9aa6b098afe99e16f867a0fe23b0ca718daf69e9d7b437c0ec87b",
+  "proof": "proofs/MAFComposition/Main.lean",
+  "proof_sha256": "7fc801a681e866f26d89ac51fab79703aab443f78ca0c737143d14afb3d1d3c2",
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "lake_manifest_sha256": "a8df0b606ec258561c226df89856884be433c19b49fb0a27335d69bb2b6e9fac",
+  "duration_seconds": 50.406,
+  "warning_as_error": true,
+  "dependency_sources": [
+    {
+      "source": "proofs/MAFComposition/Core.lean",
+      "sha256": "a2fdd1949b5d661b6f18b704988940e6923bd6458ca130dc268a8557a7386994"
+    },
+    {
+      "source": "proofs/MAFComposition/DualCalculus.lean",
+      "sha256": "36423dbe5cf07b7c66a918c316addcb7c22bde3c73e6c9c3ba2b298a897a6b66"
+    },
+    {
+      "source": "proofs/MAFComposition/Gordan.lean",
+      "sha256": "5237e75f71eeb19e92f6caf63a0bd75b27f5d6040f5a968c2ccb2fbebcfaaea8"
+    },
+    {
+      "source": "proofs/MAFComposition/Threshold.lean",
+      "sha256": "a325061d5eadc13bf5dea7eeef44b94aec2648b533a2f55d820eeba4a097b737"
+    },
+    {
+      "source": "proofs/MAFComposition/Composition.lean",
+      "sha256": "a90991ee9a6851d26004a71a10cebdd478b73ebe91e548258651d23a023618c9"
+    },
+    {
+      "source": "proofs/MAFComposition/Aggregation.lean",
+      "sha256": "ef28cc2eb7d48424583e04f5681e2a3c5ab98da6a9ca91893ff6db55060e9f28"
+    },
+    {
+      "source": "proofs/MAFComposition/Attainment.lean",
+      "sha256": "f1a32db824bf69fabfa0d7ce9f14225d4a9632683ced0c34f6ed8cdbb07283b3"
+    },
+    {
+      "source": "proofs/MAFComposition/DirectSum.lean",
+      "sha256": "b75400523460b7523c6c72e917a16e2d70d505de519e6e287337cc7db014ead7"
+    },
+    {
+      "source": "proofs/MAFComposition/ReactionEdit.lean",
+      "sha256": "f814c004e579b2023184cfb777116d38679145b4e31ec1bfb1f2cf1e33785155"
+    },
+    {
+      "source": "proofs/MAFComposition/Simulation.lean",
+      "sha256": "98dc595a15d7a895276d43a9d4d3f9698f396c81ce9fbd267a5208e9bb2a2ba4"
+    },
+    {
+      "source": "proofs/MAFComposition/Transition.lean",
+      "sha256": "031a81f223b7bd3aa9fce27b3250eda6e233afc196cf9906844416a94441739e"
+    }
+  ],
+  "dependency_mismatches": [
+    "proofs/MAFComposition/DualCalculus.lean",
+    "proofs/MAFComposition/Gordan.lean",
+    "proofs/MAFComposition/Transition.lean"
+  ],
+  "record_kind": "EXTRACT_OF_HISTORICAL_RECEIPT",
+  "extraction_note": "Original receipt remains in the source repository at receipt; receipt_sha256 identifies its complete unchanged bytes. This extract omits proof-term serialization, absolute artifact paths, and private diagnostics. It is not a new verification.",
+  "interfaces": [
+    {
+      "declaration_name": "MAFComposition.mafCompositionCalculusKernel",
+      "elaborated_type": "∀ {ι κ : Type} [inst : Fintype.{0} ι] [inst_1 : Fintype.{0} κ]\n(C : Matrix.{0, 0, 0} ι κ Real),\nIff (@MAFComposition.PrimalNonnegative ι κ inst_1 C) (Not (@MAFComposition.StrictColumnDual ι κ inst C))",
+      "declaration_type_fingerprint": "sha256:21f0c5495c08ac15e99f82003a0abc16d52819dab478f06f7e4986d9ff50adfc",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "axiom_report": "'MAFComposition.mafCompositionCalculusKernel' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "interface_source": "lean_elaborator_probe_v4"
+    },
+    {
+      "declaration_name": "MAFComposition.strictProductivityAlternative",
+      "elaborated_type": "∀ {ι κ : Type} [inst : Fintype.{0} ι] [inst_1 : Fintype.{0} κ]\n[Nonempty.{1} ι] (C : Matrix.{0, 0, 0} ι κ Real),\nIff (@MAFComposition.StrictProductive ι κ inst_1 C) (Not (@MAFComposition.WeakColumnDual ι κ inst C))",
+      "declaration_type_fingerprint": "sha256:485b47e2fce4dc87211a42e656ffa5b7872a9dab4d06615ea07e70039ab9686b",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "axiom_report": "'MAFComposition.strictProductivityAlternative' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "interface_source": "lean_elaborator_probe_v4"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+name: P011 Palomar mechanical check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@1703d7babd984ccc3831cdf89c28221abe34808f
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ github.sha }}
+      pipeline_commit: 1703d7babd984ccc3831cdf89c28221abe34808f
+      request_id: p011cloud001
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: '{"comparator_config_path":"entries/P011/comparator.json","formalization_metadata_path":"entries/P011/formalization.yaml","authorization_relationship":"I am a responsible author or maintainer"}'

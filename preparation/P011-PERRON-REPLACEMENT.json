@@ -1,0 +1,39 @@
+{
+  "kind": "INDEPENDENT_REPLACEMENT_PARTIALLY_COMPILED",
+  "entry": "P011",
+  "created_utc": "2026-09-24T19:44:20.899562+00:00",
+  "author": "Michael Mislan",
+  "license": "Apache-2.0",
+  "replaced_dependency": "proofs/DegradationControl/External/SchauderFixedPoint.lean",
+  "replaced_dependency_sha256": "cd1de5cde1c99eff70317d7bf81632ac97344c487ab3691158c56c95d374ba7f",
+  "reason": "Unresolved third-party redistribution terms (preparation/P011-REDISTRIBUTION.md).",
+  "method": "Collatz-Wielandt compactness argument for entrywise-positive matrices; no fixed-point theorem. Written without reference to the replaced file.",
+  "new_module": "proofs/DegradationControl/PositivePerron.lean",
+  "new_module_sha256": "5d502356d26e85251bb096c174679ffae2849544c00778d322a6062bdd7bbd96",
+  "new_declaration": "DegradationControl.PositivePerron.exists_perron",
+  "edited_module": "proofs/DegradationControl/PerronExistence.lean",
+  "edited_before_sha256": "c71eea8355b491891a7ceeb37ace475623c2289ae7d2fe1aa8fde266821f1295",
+  "edited_after_sha256": "09649b6d4108989fa156134ce05ca83e20ef53726d6e4ddb17ed2eb843c33621",
+  "edit_summary": "Import changed from External.SchauderFixedPoint to PositivePerron; proof of positiveMatrix_exists_normalizedPositive_eigenvector replaced by a call to PositivePerron.exists_perron. Its statement is unchanged; no other declaration changed.",
+  "static_closure_contains_external": false,
+  "lean_executed": true,
+  "compile_status": "PositivePerron.lean: PASS (lake env lean -DwarningAsError=true, Lean v4.35.0-rc2, pinned Mathlib; exit 0) after deprecation renames (Set.ofPred_forall/ofPred_and, continuous_finsetSum, push Not, P.mulVec) and an explicit (\u03b9 := \u03b9). PerronExistence.lean: NOT YET BUILT.",
+  "unchanged_file_note": "The old file remains in the working checkout for provenance but is imported by no module and excluded from every release candidate.",
+  "perron_existence_build_attempt": {
+    "command": "lake build proofs.DegradationControl.PerronExistence",
+    "result": "FAILED_BEFORE_REACHING_PerronExistence",
+    "failures": [
+      "PositivePerron: std::bad_alloc under parallel build (compiled cleanly standalone; import Mathlib memory pressure)",
+      "Certificates.lean:134: `dsimp` made no progress (pre-existing target-toolchain incompatibility in an unchanged file)"
+    ]
+  },
+  "compatibility_edits": [
+    {
+      "file": "proofs/DegradationControl/Certificates.lean",
+      "before_sha256": "1999280b447ba7deeb2c24f08dc343f0c1379a2bc58cb83a136eee0a1afcdd42",
+      "after_sha256": "62013e957a089226eb2d86995168e02de4b02055a2b277123440b9e0348427df",
+      "change": "Removed no-op `dsimp [nextGenerationAction]` at line 134 (goal already unfolded by the preceding `apply`). Not yet rebuilt."
+    }
+  ],
+  "updated_utc": "2026-09-24T20:14:13.871749+00:00"
+}
