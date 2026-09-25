@@ -61,7 +61,15 @@
   },
   "lean_executed": true,
   "local_checks": "PalomarVerify (Lean 4.35.0-rc2, pinned Mathlib), user-authorized P011 Lean runs: RationalGordan, CertifiedDirectEnumeration, OneSpeciesExample and Registry.P011.Solution build with warningAsError; Registry.P011.Challenge builds; the project-constant closures of all eleven selected theorems agree between Challenge and Solution (171 constants: names, universe parameters, type and value hashes).",
-  "official_verification": "PENDING",
+  "official_verification": {
+    "result": "PASS",
+    "commit": "26cb2eccf42a33dd7b3e2de7665a9bae71dc7f82",
+    "completed_at_utc": "2026-09-25T16:55:29Z",
+    "environment": "PalomarVerify, scripts/verify_entry.sh P011, Lean 4.35.0-rc2, pinned Mathlib 065356127b1d",
+    "checks": "Solution build; exact Comparator comparison of all 11 selected declarations; permitted axioms propext, Quot.sound, Classical.choice only; con-ron (28109 declarations), nanoda and default Lean kernels accepted",
+    "receipt": "preparation/verification/P011-checker-repair-run/result.json",
+    "snapshot": "source-hashes.json equals every file of commit 26cb2ec; changed_during_verification: []"
+  },
   "publication": "NOT_PERFORMED",
   "submission": "NOT_PERFORMED"
 }

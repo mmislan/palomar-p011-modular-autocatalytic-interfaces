@@ -1,0 +1,76 @@
+Resolving dependencies
+Building Registry.P011.Challenge
+⚠ [1753/1753] Built Registry.P011.Challenge (9.8s)
+warning: Registry/P011/Challenge.lean:133:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:141:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:151:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:159:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:169:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:248:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:282:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:711:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:725:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:730:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:751:8: declaration uses `sorry`
+Build completed successfully (1753 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, MAFComposition.reactionEdit, MAFComposition.aggregate, MAFComposition.directSum, MAFComposition.parallel, MAFComposition.scalarNoncompositionality, DegradationControl.sourceNetwork_arbitraryDegradationRegions, DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate, AutocatalyticCS.sourceDirectCSCoreEnum_exact, AutocatalyticCS.certifiedAutocatalyticTest_nonempty, AutocatalyticCS.certifiedAutocatalyticTest_rejects_empty, AutocatalyticCS.OneSpeciesExample.sourceDirectCSCoreEnum_example, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Registry.P011.Challenge
+Building Registry.P011.Solution
+✔ [8931/8977] Built proofs.AutocatalyticCS.AnchorExchangeDAG (10s)
+✔ [8932/8977] Built proofs.AutocatalyticCS.FiniteMinimality (10s)
+✔ [8933/8977] Built proofs.AutocatalyticCS.Basic (11s)
+✔ [8934/8977] Built proofs.AutocatalyticCS.ExchangeProfile (11s)
+✔ [8935/8977] Built proofs.AutocatalyticCS.DirectPathPack (5.0s)
+✔ [8936/8977] Built proofs.AutocatalyticCS.CycleToggle (4.5s)
+✔ [8937/8977] Built proofs.AutocatalyticCS.ExactSemipositivity (5.0s)
+✔ [8938/8977] Built proofs.AutocatalyticCS.PathParity (4.7s)
+✔ [8939/8977] Built proofs.AutocatalyticCS.SourceSemantics (15s)
+✔ [8940/8977] Built proofs.AutocatalyticCS.SourceGraphBridge (9.1s)
+✔ [8941/8977] Built proofs.AutocatalyticCS.FinitePathForest (25s)
+✔ [8942/8977] Built proofs.AutocatalyticCS.SourcePathExtraction (20s)
+✔ [8943/8977] Built proofs.AutocatalyticCS.SourceCoreSemantics (13s)
+✔ [8944/8977] Built proofs.AutocatalyticCS.SourceCandidateCompleteness (19s)
+✔ [8945/8977] Built proofs.MAFComposition.DualCalculus (226s)
+✔ [8946/8977] Built proofs.DegradationControl.Reaction (226s)
+✔ [8947/8977] Built proofs.MAFComposition.Core (226s)
+✔ [8948/8977] Built proofs.DegradationControl.PositivePerron (226s)
+✔ [8949/8977] Built proofs.AutocatalyticCS.RationalGordan (227s)
+✔ [8950/8977] Built proofs.MAFComposition.Gordan (281s)
+✔ [8951/8977] Built proofs.DegradationControl.Network (281s)
+✔ [8952/8977] Built proofs.AutocatalyticCS.CertifiedDirectEnumeration (283s)
+✔ [8953/8977] Built proofs.MAFComposition.Threshold (127s)
+✔ [8954/8977] Built proofs.MAFComposition.Transition (127s)
+✔ [8955/8977] Built proofs.DegradationControl.Certificates (127s)
+✔ [8956/8977] Built proofs.AutocatalyticCS.SourceDirectEnumeration (123s)
+✔ [8957/8977] Built proofs.MAFComposition.Composition (325s)
+✔ [8958/8977] Built proofs.MAFComposition.Attainment (325s)
+✔ [8959/8977] Built proofs.MAFComposition.Simulation (325s)
+✔ [8960/8977] Built proofs.DegradationControl.ProjectiveBoundary (325s)
+✔ [8961/8977] Built proofs.AutocatalyticCS.OneSpeciesExample (325s)
+✔ [8962/8977] Built proofs.MAFComposition.Aggregation (176s)
+✔ [8963/8977] Built proofs.MAFComposition.ReactionEdit (176s)
+✔ [8964/8977] Built proofs.MAFComposition.DirectSum (177s)
+✔ [8965/8977] Built proofs.DegradationControl.SpectralSemantics (177s)
+✔ [8966/8977] Built proofs.MAFComposition.Main (74s)
+✔ [8967/8977] Built proofs.DegradationControl.PerronExistence (76s)
+✔ [8968/8977] Built proofs.DegradationControl.PartialActuation (12s)
+✔ [8969/8977] Built proofs.DegradationControl.CycleControl (8.6s)
+✔ [8970/8977] Built proofs.DegradationControl.TypeII (9.1s)
+✔ [8971/8977] Built proofs.DegradationControl.TypeII2 (8.4s)
+✔ [8972/8977] Built proofs.DegradationControl.FiniteAtlas (7.1s)
+✔ [8973/8977] Built proofs.DegradationControl.SCCAssembly (7.7s)
+✔ [8974/8977] Built proofs.DegradationControl.RobustInterval (7.3s)
+✔ [8975/8977] Built proofs.DegradationControl.GaugePositivity (7.9s)
+✔ [8976/8977] Built proofs.DegradationControl.Main (6.8s)
+✔ [8977/8977] Built Registry.P011.Solution (6.4s)
+Build completed successfully (8977 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, MAFComposition.reactionEdit, MAFComposition.aggregate, MAFComposition.directSum, MAFComposition.parallel, MAFComposition.scalarNoncompositionality, DegradationControl.sourceNetwork_arbitraryDegradationRegions, DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate, AutocatalyticCS.sourceDirectCSCoreEnum_exact, AutocatalyticCS.certifiedAutocatalyticTest_nonempty, AutocatalyticCS.certifiedAutocatalyticTest_rejects_empty, AutocatalyticCS.OneSpeciesExample.sourceDirectCSCoreEnum_example, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Registry.P011.Solution
+Running con-ron kernel on solution
+con-ron: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)
+con-ron: 2 declarations hoisted ahead of the pinned Nat operations they ground: Nat.mul._f, Nat.mul
+con-ron: accepted 28109 declarations (--verified)
+con-ron kernel accepts the solution
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!

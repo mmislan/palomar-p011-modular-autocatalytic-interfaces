@@ -104,5 +104,10 @@ This is agent-assisted source reading, not an independent human review.
 - Earlier snapshot (eight declarations, original checker form): the local
   official verifier passed on Lean 4.35.0-rc2 ([receipt](../../preparation/verification/P011-release-candidate-run/result.json)). That receipt is
   historical. It does not cover the revised checker or the three new
-  declarations; their verification for this snapshot is recorded in
-  [P011-CHECKER-REPAIR.json](../../preparation/P011-CHECKER-REPAIR.json).
+  declarations.
+- Local official verifier on Lean 4.35.0-rc2 (2026-09-25), commit `26cb2ec`
+  of this revision: PASS for all eleven selected declarations. The run covered
+  the Solution build, exact Comparator comparison, the permitted axioms only,
+  and the con-ron, nanoda and default Lean kernels ([receipt](../../preparation/verification/P011-checker-repair-run/result.json)). The
+  receipt's source snapshot matches every file of that commit. The Palomar
+  cloud check has not been run.
