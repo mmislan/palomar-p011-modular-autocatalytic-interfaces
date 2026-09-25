@@ -3,5 +3,6 @@
   "before_sha256": "4629ffcd52ee80980568990725f039722f9183704fa73b9cc4aa7cc6fc3f1b0f",
   "after_sha256": "ea31d8f20b62762add7561da5f377137f4ac3136c3fa2887f0a4094e147c5eb1",
   "change": "Wrap the two graph symmetry proofs in Std.Symm constructors required by the target Mathlib API. Mathematical adjacency definitions unchanged.",
-  "proof_verification": "NOT_RUN"
+  "proof_verification": "NOT_RUN",
+  "historical_record_note": "Status fields describe this migration when recorded. Subsequent verification of all eleven current declarations passed; see entries/P011/SCOPE.md for commits and evidence."
 }

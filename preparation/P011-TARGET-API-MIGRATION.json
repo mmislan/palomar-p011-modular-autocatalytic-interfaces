@@ -117,5 +117,6 @@
       "change": "The AutocatalyticCS block was re-scoped into one namespace block per source module (Basic, FiniteMinimality, DirectPathPack, SourceSemantics, SourceGraphBridge, CycleToggle, and the core/enumeration modules), with the same variable declarations and opens, the same public helper names and the same options. A second Comparator run on the resulting candidate matched all eight statements and then reported \"Const does not match\" for MAFComposition.Network.priceCone: the column calculus (weightedColumn, StrictObstruction, parallelColumns, singletonColumn) is universe-polymorphic in DualCalculus.lean but was fixed to Type in the Challenge; those four definitions now sit in their own block with the source variables {ι κ ρ : Type*} [Fintype ι]. Definition and theorem text is otherwise unchanged; the DegradationControl block is byte-identical. 680 -> 724 lines."
     },
     "check": "In PalomarVerify (Lean 4.35.0-rc2, pinned Mathlib): Solution and Challenge build; the project-constant closure of all eight selected theorems has 165 constants in each environment with identical names, universe parameters, type hashes and definition-value hashes."
-  }
+  },
+  "historical_record_note": "Status fields describe this migration when recorded. Subsequent verification of all eleven current declarations passed; see entries/P011/SCOPE.md for commits and evidence."
 }

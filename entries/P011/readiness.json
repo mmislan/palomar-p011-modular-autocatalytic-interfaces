@@ -6,16 +6,16 @@
     15
   ],
   "historical_verification": "PASS",
-  "challenge": "COMPILES_TARGET",
+  "challenge": "VERIFIED_TARGET",
   "solution": "LOCAL_VERIFIER_PASS",
   "target_compilation": "PASS",
   "comparator": "PASS",
   "independent_kernels": "PASS_CON_RON_NANODA_LEAN",
-  "statement_fidelity": "SOURCE_READ_AGENT_REVIEWED_VERIFICATION_PENDING",
+  "statement_fidelity": "SOURCE_READ_AGENT_REVIEWED",
   "metadata_review": "AGENT_PREPARED",
   "scope_gap": false,
-  "publication": "NOT_AUTHORIZED",
-  "submission": "NOT_AUTHORIZED",
+  "publication": "AUTHORIZED",
+  "submission": "AUTHORIZED_AFTER_EXACT_COMMIT_CLOUD_PASS",
   "selected_declarations": [
     "MAFComposition.reactionEdit",
     "MAFComposition.aggregate",
@@ -32,11 +32,13 @@
   "redistribution": "THIRD_PARTY_SOURCE_REPLACED_NOT_IMPORTED",
   "redistribution_evidence": "preparation/P011-PERRON-REPLACEMENT.json",
   "disposition": "CHECKER_REVISED_LOCAL_OFFICIAL_VERIFIER_PASS",
-  "split_entry": "entries/P011A",
   "claim_evidence": "entries/P011/CLAIM-EVIDENCE.md",
   "api_migration_evidence": "preparation/P011-TARGET-API-MIGRATION.json",
   "checker_repair_evidence": "preparation/P011-CHECKER-REPAIR.json",
   "historical_verification_receipt": "preparation/verification/P011-release-candidate-run/result.json",
   "verification_receipt": "preparation/verification/P011-checker-repair-run/result.json",
-  "verified_commit": "26cb2eccf42a33dd7b3e2de7665a9bae71dc7f82"
+  "verified_commit": "26cb2eccf42a33dd7b3e2de7665a9bae71dc7f82",
+  "cloud_verified_commit": "7d987d4b9a017d63017e4b8ae7133da53f65ffd7",
+  "cloud_verification": "PASS",
+  "cloud_verification_run": 36172946830
 }

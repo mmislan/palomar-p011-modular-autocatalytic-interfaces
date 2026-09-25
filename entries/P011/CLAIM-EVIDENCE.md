@@ -109,5 +109,8 @@ This is agent-assisted source reading, not an independent human review.
   of this revision: PASS for all eleven selected declarations. The run covered
   the Solution build, exact Comparator comparison, the permitted axioms only,
   and the con-ron, nanoda and default Lean kernels ([receipt](../../preparation/verification/P011-checker-repair-run/result.json)). The
-  receipt's source snapshot matches every file of that commit. The Palomar
-  cloud check has not been run.
+  receipt's source snapshot matches every file of that commit. The subsequent full cloud check is recorded below.
+
+## Published-commit verification
+
+All eleven selected declarations passed Solution compilation, exact Comparator comparison and the con-ron, NanoDa and default Lean kernels on Lean 4.35.0-rc2. The local receipt covers commit `26cb2eccf42a33dd7b3e2de7665a9bae71dc7f82`; the [full cloud check](https://github.com/mmislan/palomar-p011-modular-autocatalytic-interfaces/actions/runs/36172946830) covers commit `7d987d4b9a017d63017e4b8ae7133da53f65ffd7`. This documentation correction preserves their proof, Challenge, Comparator and pinned dependency files byte-for-byte. These are completed mechanical checks; they do not constitute an independent human mathematical review.
