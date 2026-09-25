@@ -1,0 +1,71 @@
+Resolving dependencies
+Building Registry.P011.Challenge
+⚠ [1753/1753] Built Registry.P011.Challenge (14s)
+warning: Registry/P011/Challenge.lean:133:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:141:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:151:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:159:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:169:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:248:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:282:8: declaration uses `sorry`
+warning: Registry/P011/Challenge.lean:711:8: declaration uses `sorry`
+Build completed successfully (1753 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, MAFComposition.reactionEdit, MAFComposition.aggregate, MAFComposition.directSum, MAFComposition.parallel, MAFComposition.scalarNoncompositionality, DegradationControl.sourceNetwork_arbitraryDegradationRegions, DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate, AutocatalyticCS.sourceDirectCSCoreEnum_exact, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Registry.P011.Challenge
+Building Registry.P011.Solution
+✔ [8931/8975] Built proofs.AutocatalyticCS.FiniteMinimality (4.4s)
+✔ [8932/8975] Built proofs.AutocatalyticCS.AnchorExchangeDAG (4.6s)
+✔ [8933/8975] Built proofs.AutocatalyticCS.Basic (5.2s)
+✔ [8934/8975] Built proofs.AutocatalyticCS.ExchangeProfile (5.4s)
+✔ [8935/8975] Built proofs.AutocatalyticCS.DirectPathPack (3.9s)
+✔ [8936/8975] Built proofs.AutocatalyticCS.CycleToggle (3.8s)
+✔ [8937/8975] Built proofs.AutocatalyticCS.ExactSemipositivity (4.5s)
+✔ [8938/8975] Built proofs.AutocatalyticCS.PathParity (4.6s)
+✔ [8939/8975] Built proofs.AutocatalyticCS.SourceSemantics (14s)
+✔ [8940/8975] Built proofs.AutocatalyticCS.SourceGraphBridge (9.3s)
+✔ [8941/8975] Built proofs.AutocatalyticCS.FinitePathForest (4.3s)
+✔ [8942/8975] Built proofs.AutocatalyticCS.SourcePathExtraction (4.5s)
+✔ [8943/8975] Built proofs.AutocatalyticCS.SourceCoreSemantics (2.7s)
+✔ [8944/8975] Built proofs.AutocatalyticCS.SourceCandidateCompleteness (2.9s)
+✔ [8945/8975] Built proofs.AutocatalyticCS.CertifiedDirectEnumeration (4.0s)
+✔ [8946/8975] Built proofs.AutocatalyticCS.SourceDirectEnumeration (3.0s)
+✔ [8947/8975] Built proofs.DegradationControl.Reaction (83s)
+✔ [8948/8975] Built proofs.MAFComposition.DualCalculus (84s)
+✔ [8949/8975] Built proofs.MAFComposition.Core (84s)
+✔ [8950/8975] Built proofs.DegradationControl.PositivePerron (85s)
+✔ [8951/8975] Built proofs.DegradationControl.Network (22s)
+✔ [8952/8975] Built proofs.MAFComposition.Gordan (23s)
+✔ [8953/8975] Built proofs.MAFComposition.Threshold (18s)
+✔ [8954/8975] Built proofs.MAFComposition.Transition (18s)
+✔ [8955/8975] Built proofs.DegradationControl.Certificates (19s)
+✔ [8956/8975] Built proofs.MAFComposition.Composition (66s)
+✔ [8957/8975] Built proofs.MAFComposition.Simulation (66s)
+✔ [8958/8975] Built proofs.DegradationControl.ProjectiveBoundary (66s)
+✔ [8959/8975] Built proofs.MAFComposition.Attainment (67s)
+✔ [8960/8975] Built proofs.MAFComposition.Aggregation (66s)
+✔ [8961/8975] Built proofs.MAFComposition.ReactionEdit (66s)
+✔ [8962/8975] Built proofs.DegradationControl.SpectralSemantics (66s)
+✔ [8963/8975] Built proofs.MAFComposition.DirectSum (67s)
+✔ [8964/8975] Built proofs.MAFComposition.Main (20s)
+✔ [8965/8975] Built proofs.DegradationControl.PerronExistence (23s)
+✔ [8966/8975] Built proofs.DegradationControl.PartialActuation (9.2s)
+✔ [8967/8975] Built proofs.DegradationControl.CycleControl (8.9s)
+✔ [8968/8975] Built proofs.DegradationControl.TypeII (7.8s)
+✔ [8969/8975] Built proofs.DegradationControl.TypeII2 (6.5s)
+✔ [8970/8975] Built proofs.DegradationControl.FiniteAtlas (6.4s)
+✔ [8971/8975] Built proofs.DegradationControl.SCCAssembly (6.4s)
+✔ [8972/8975] Built proofs.DegradationControl.RobustInterval (6.4s)
+✔ [8973/8975] Built proofs.DegradationControl.GaugePositivity (6.9s)
+✔ [8974/8975] Built proofs.DegradationControl.Main (6.3s)
+✔ [8975/8975] Built Registry.P011.Solution (6.1s)
+Build completed successfully (8975 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, MAFComposition.reactionEdit, MAFComposition.aggregate, MAFComposition.directSum, MAFComposition.parallel, MAFComposition.scalarNoncompositionality, DegradationControl.sourceNetwork_arbitraryDegradationRegions, DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate, AutocatalyticCS.sourceDirectCSCoreEnum_exact, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Registry.P011.Solution
+Running con-ron kernel on solution
+con-ron: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)
+con-ron: 2 declarations hoisted ahead of the pinned Nat operations they ground: Nat.mul._f, Nat.mul
+con-ron: accepted 27942 declarations (--verified)
+con-ron kernel accepts the solution
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!

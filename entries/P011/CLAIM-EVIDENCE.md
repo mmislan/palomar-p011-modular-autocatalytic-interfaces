@@ -77,5 +77,8 @@ This is agent-assisted source reading, not an independent human review.
 - Conditional premises: attained MAFs and nonnegative inputs; anchor
   completeness and uniqueness; certified checker; rational semipositivity;
   nonnegative unary reactions with an irreducible source; Metzler matrices.
-- Current target Solution compilation, Comparator and independent kernel checks
-  are pending for every selected declaration.
+- Local official verifier on Lean 4.35.0-rc2 (2026-09-25): PASS for all eight
+  selected declarations. This covers the Solution build, exact Comparator
+  comparison, the permitted axioms only, and the con-ron, nanoda and default
+  Lean kernels ([receipt](../../preparation/verification/P011-release-candidate-run/result.json)). The Palomar cloud check has not been
+  run.

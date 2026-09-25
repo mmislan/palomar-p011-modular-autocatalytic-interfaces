@@ -1,0 +1,70 @@
+info: mathlib: materializing new dependency
+info: mathlib: fetching revision '065356127b1dc0016f66b7283ce0ce2c4055aa55' from https://github.com/leanprover-community/mathlib4.git
+info: mathlib: checking out revision '065356127b1dc0016f66b7283ce0ce2c4055aa55'
+info: plausible: materializing new dependency
+info: plausible: fetching revision 'e50948299c4dc4a4c21b1c34b6a6a4fddc19f912' from https://github.com/leanprover-community/plausible
+info: plausible: checking out revision 'e50948299c4dc4a4c21b1c34b6a6a4fddc19f912'
+info: LeanSearchClient: materializing new dependency
+info: LeanSearchClient: fetching revision '95e037bfdc31d3916ac615446847fb01960e2719' from https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision '95e037bfdc31d3916ac615446847fb01960e2719'
+info: importGraph: materializing new dependency
+info: importGraph: fetching revision '10930f8138f0462dbd744a91fc03a16fae0e046f' from https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision '10930f8138f0462dbd744a91fc03a16fae0e046f'
+info: proofwidgets: materializing new dependency
+info: proofwidgets: fetching revision '4c70ac059693669e5756e32a7a94b57ee1e99dc5' from https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '4c70ac059693669e5756e32a7a94b57ee1e99dc5'
+info: aesop: materializing new dependency
+info: aesop: fetching revision '75d936c7af167cc93fac0d31237682fc2204591d' from https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '75d936c7af167cc93fac0d31237682fc2204591d'
+info: Qq: materializing new dependency
+info: Qq: fetching revision '786b7acdca7eb4e9c76c5d1d5bd810e7e5c56334' from https://github.com/leanprover-community/quote4
+info: Qq: checking out revision '786b7acdca7eb4e9c76c5d1d5bd810e7e5c56334'
+info: batteries: materializing new dependency
+info: batteries: fetching revision 'ed9b316aabe389fec1ef43c3326ab48c7e59be42' from https://github.com/leanprover-community/batteries
+info: batteries: checking out revision 'ed9b316aabe389fec1ef43c3326ab48c7e59be42'
+info: Cli: materializing new dependency
+info: Cli: fetching revision '2842b9871b04862f944c032e34052cb9448ccb71' from https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '2842b9871b04862f944c032e34052cb9448ccb71'
+✔ [1/5] Built Cache.Cli (836ms)
+✔ [2/5] Built Cache.Lean (919ms)
+✔ [8/42] Built Cache.Env (451ms)
+✔ [9/42] Built Cache.Cli:c.o (412ms)
+✔ [10/42] Built Cache.Lean:c.o (424ms)
+✔ [11/42] Built Cache.Env:c.o (165ms)
+✔ [12/42] Built Cache.Infra (503ms)
+✔ [13/42] Built Cache.Infra:c.o (223ms)
+✔ [14/42] Built Cache.IO (1.8s)
+✔ [15/42] Built Cache.Hashing (990ms)
+✔ [16/42] Built Cache.IO:c.o (1.4s)
+✔ [17/42] Built Cache.Hashing:c.o (453ms)
+✔ [18/42] Built Cache.Requests (1.9s)
+✔ [19/42] Built Cache.Marker (727ms)
+✔ [20/42] Built Cache.Marker:c.o (123ms)
+✔ [21/42] Built Cache.Upload.Dest (827ms)
+✔ [22/42] Built Cache.Query (893ms)
+✔ [23/42] Built Cache.Upload.Dest:c.o (155ms)
+✔ [24/42] Built Cache.Query:c.o (351ms)
+✔ [25/42] Built Cache.Upload.Curl (918ms)
+✔ [26/42] Built Cache.Upload.Rclone (950ms)
+✔ [27/42] Built Cache.Warning (989ms)
+✔ [28/42] Built Cache.Requests:c.o (2.7s)
+✔ [29/42] Built Cache.Upload.Curl:c.o (258ms)
+✔ [30/42] Built Cache.Upload.Rclone:c.o (234ms)
+✔ [31/42] Built Cache.Warning:c.o (282ms)
+✔ [32/42] Built Cache.Upload.Azure (785ms)
+✔ [33/42] Built Cache.Upload.S3 (889ms)
+✔ [34/42] Built Cache.Upload.Azure:c.o (161ms)
+✔ [35/42] Built Cache.Upload.S3:c.o (289ms)
+✔ [36/42] Built Cache.Upload.Defs (712ms)
+✔ [37/42] Built Cache.Upload.Defs:c.o (148ms)
+✔ [38/42] Built Cache.Upload (736ms)
+✔ [39/42] Built Cache.Upload:c.o (124ms)
+✔ [40/42] Built Cache.Main (1.2s)
+✔ [41/42] Built Cache.Main:c.o (934ms)
+✔ [42/42] Built cache:exe (2.0s)
+Current branch: HEAD
+Using cache from origin: (some leanprover-community/mathlib4)
+Decompressing 8723 already-cached file(s) (192 already decompressed)
+No files to download
+Decompressed 8723 already-cached file(s)
+Completed successfully in 37736 ms!

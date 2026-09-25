@@ -6,11 +6,11 @@
     15
   ],
   "historical_verification": "PASS",
-  "challenge": "COMPILES_TARGET_STATEMENT_ONLY",
-  "solution": "DRAFT_NOT_VERIFIED",
-  "target_compilation": "LOCAL_CLOSURE_BUILD_PASS",
-  "comparator": "NOT_RUN",
-  "independent_kernels": "NOT_RUN",
+  "challenge": "COMPILES_TARGET",
+  "solution": "LOCAL_VERIFIER_PASS",
+  "target_compilation": "PASS",
+  "comparator": "PASS",
+  "independent_kernels": "PASS_CON_RON_NANODA_LEAN",
   "statement_fidelity": "SOURCE_READ_AGENT_REVIEWED_VERIFICATION_PENDING",
   "metadata_review": "AGENT_PREPARED",
   "scope_gap": false,
@@ -28,8 +28,9 @@
   ],
   "redistribution": "THIRD_PARTY_SOURCE_REPLACED_NOT_IMPORTED",
   "redistribution_evidence": "preparation/P011-PERRON-REPLACEMENT.json",
-  "disposition": "PREPARED_ALL_THREE_PROBLEMS_SOLUTION_CLOSURE_BUILT_LOCALLY",
+  "disposition": "LOCAL_OFFICIAL_VERIFIER_PASS_ALL_THREE_PROBLEMS",
   "split_entry": "entries/P011A",
   "claim_evidence": "entries/P011/CLAIM-EVIDENCE.md",
-  "api_migration_evidence": "preparation/P011-TARGET-API-MIGRATION.json"
+  "api_migration_evidence": "preparation/P011-TARGET-API-MIGRATION.json",
+  "verification_receipt": "preparation/verification/P011-release-candidate-run/result.json"
 }

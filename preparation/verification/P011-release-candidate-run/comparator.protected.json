@@ -1,0 +1,27 @@
+{
+  "challenge_module": "Registry.P011.Challenge",
+  "solution_module": "Registry.P011.Solution",
+  "theorem_names": [
+    "MAFComposition.reactionEdit",
+    "MAFComposition.aggregate",
+    "MAFComposition.directSum",
+    "MAFComposition.parallel",
+    "MAFComposition.scalarNoncompositionality",
+    "DegradationControl.sourceNetwork_arbitraryDegradationRegions",
+    "DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate",
+    "AutocatalyticCS.sourceDirectCSCoreEnum_exact"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "external_kernels": {
+    "nanoda": [
+      "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/nanoda_bin"
+    ],
+    "con-ron": [
+      "/root/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/con-ron"
+    ]
+  }
+}

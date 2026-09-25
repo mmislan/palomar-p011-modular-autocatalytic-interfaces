@@ -1,0 +1,12 @@
+{
+  "entry": "P011",
+  "last_stage": "comparator",
+  "last_stage_exit_code": 0,
+  "comparator_exit_code": 0,
+  "completed_at_utc": "2026-09-25T09:50:33.660149+00:00",
+  "source_snapshot": "source-hashes.json",
+  "changed_during_verification": [],
+  "mechanical_verification": "PASS",
+  "editorial_review": "NOT_RUN",
+  "submission": "NOT_PERFORMED"
+}
