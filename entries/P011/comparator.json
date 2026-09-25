@@ -9,7 +9,10 @@
     "MAFComposition.scalarNoncompositionality",
     "DegradationControl.sourceNetwork_arbitraryDegradationRegions",
     "DegradationControl.partialActuation_stabilizable_iff_unactuatedCertificate",
-    "AutocatalyticCS.sourceDirectCSCoreEnum_exact"
+    "AutocatalyticCS.sourceDirectCSCoreEnum_exact",
+    "AutocatalyticCS.certifiedAutocatalyticTest_nonempty",
+    "AutocatalyticCS.certifiedAutocatalyticTest_rejects_empty",
+    "AutocatalyticCS.OneSpeciesExample.sourceDirectCSCoreEnum_example"
   ],
   "permitted_axioms": [
     "propext",

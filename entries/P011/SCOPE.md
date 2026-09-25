@@ -1,6 +1,6 @@
 # P011 statement preparation
 
-This paper groups literature questions 13, 14 and 15. The current 724-line
+This paper groups literature questions 13, 14 and 15. The current 762-line
 Challenge exposes statements for all three and compiles on the target toolchain.
 Compilation establishes statement well-formedness, not proof verification or
 final claim-to-literature fidelity.
@@ -25,7 +25,14 @@ reaction kinetics.
 For question 14 the selected source endpoint is
 `AutocatalyticCS.sourceDirectCSCoreEnum_exact`. Its hypotheses include complete
 ordinary-core anchors, unique anchor matchings, exhaustive species/reaction
-orders, and a checker carrying exact rational certificates. The Challenge
+orders, and a checker carrying exact rational certificates. The checker must
+give a dual certificate only for realising matchings with at least one species.
+`certifiedAutocatalyticTest_nonempty` proves that such a checker exists for
+every finite network, and `certifiedAutocatalyticTest_rejects_empty` proves
+that every checker rejects the empty edge set.
+`OneSpeciesExample.sourceDirectCSCoreEnum_example` proves the whole hypothesis
+bundle for `A → 2A` and shows that the enumerator returns its one-edge core.
+The Challenge
 includes the bounded path search, disjoint path-pack generation, checked edge
 table construction, ordinary-core semantics, and rational certificates used by
 the exact enumerator. It preserves support containment versus matching-edge

@@ -1,0 +1,67 @@
+{
+  "kind": "CERTIFIED_CHECKER_REPAIR",
+  "entry": "P011",
+  "created_utc": "2026-09-25T17:04:41.574625+00:00",
+  "author": "Michael Mislan",
+  "license": "Apache-2.0",
+  "base_commit": "12743572e28a97a090842b939dc81845c3a8a339",
+  "issue": "In the base commit the negative field of CertifiedAutocatalyticTest required a NegativeRationalCertificate for every matching realising a rejected edge set, including the empty matching, whose certificate would need a positive coordinate on an empty index set; accepting the empty set is also impossible because a positive certificate needs a nonzero vector. The checker type was therefore uninhabited and AutocatalyticCS.sourceDirectCSCoreEnum_exact had no instances.",
+  "changes": {
+    "checker": "negative now requires a dual certificate only for realising matchings E with E.species.Nonempty. CertifiedAutocatalyticTest.exact is proved from IndexedMatching.species_nonempty_of_autocatalytic.",
+    "boundary_lemmas": [
+      "IndexedMatching.species_nonempty_of_autocatalytic",
+      "IndexedMatching.not_autocatalytic_of_species_eq_empty",
+      "PositiveRationalCertificate.species_nonempty",
+      "IndexedMatching.species_eq_empty_of_edgeFinset_eq_empty",
+      "not_autocatalyticEdgeSet_empty",
+      "certifiedAutocatalyticTest_rejects_empty",
+      "CertifiedAutocatalyticTest.exists_matching_of_test"
+    ],
+    "certificate_completeness": "RationalGordan.gordan: Gordan's alternative over ℚ proved by Fourier–Motzkin elimination (induction on the number of columns; each eliminated system is a nonnegative rational combination of the previous rows; the eliminated variable is chosen strictly between finitely many rational bounds). No real numbers, limits or density arguments are used. IndexedMatching.certificate_alternative applies it to the stacked system [M; I] x ≫ 0: for every matching with at least one species there is a PositiveRationalCertificate or a NegativeRationalCertificate.",
+    "checker_existence": "canonicalCertifiedTest Q (noncomputable, classical decide on AutocatalyticEdgeSet) answers true exactly on autocatalytic edge sets; positive certificates are the semipositivity witnesses; negative certificates come from certificate_alternative for every nonempty realising matching, so alternate indexed representations are handled by quantification. certifiedAutocatalyticTest_nonempty : Nonempty (CertifiedAutocatalyticTest Q) for every finite network. Not an executable rational solver.",
+    "applicable_instance": "OneSpeciesExample (A → 2A on Unit × Unit, one-edge anchor): exhaustive singleton orders, anchor completeness for OrdinaryCore, IsUniqueMatching of the anchor subgraph, checker existence, IsCore of the one-edge set, and sourceDirectCSCoreEnum … checker = {{((), ())}} for every checker, packaged as OneSpeciesExample.sourceDirectCSCoreEnum_example.",
+    "selected_declarations_added": [
+      "AutocatalyticCS.certifiedAutocatalyticTest_nonempty",
+      "AutocatalyticCS.certifiedAutocatalyticTest_rejects_empty",
+      "AutocatalyticCS.OneSpeciesExample.sourceDirectCSCoreEnum_example"
+    ],
+    "selected_declarations_unchanged": "The seven MAFComposition and DegradationControl declarations and the statement of AutocatalyticCS.sourceDirectCSCoreEnum_exact are unchanged; the checker type it quantifies over changed.",
+    "challenge": "CertifiedAutocatalyticTest.negative mirrored; statements of the three new declarations added; OneSpeciesExample.network and .anchor copied verbatim from the source. Mathlib-only imports; source scopes and public helper names preserved.",
+    "manuscript": "papers/P011/manuscript/main.tex: Construction 4.6 negative-certificate clause; Theorem 4.7 proof sketch; new Proposition 4.8 (certified tests exist) and Example 4.9 (A → 2A); overview sentence; Perron construction described as the Collatz–Wielandt argument actually formalized (replacing the stale Schauder fixed-point description and its provenance paragraph); verification section notes the submitted Lean 4.35.0-rc2 snapshot and the new declarations. PDF rebuilt with pdflatex/bibtex (25 pages; no undefined references; only new labels 4.8 and 4.9 added) and pages 2, 8–11 and 20–22 visually inspected."
+  },
+  "files": {
+    "proofs/AutocatalyticCS/RationalGordan.lean": {
+      "before_sha256": null,
+      "after_sha256": "6e4dc9f95da98aaf7a53ce4012e49a87fdee013c48f4d076989214ffbc712df6"
+    },
+    "proofs/AutocatalyticCS/CertifiedDirectEnumeration.lean": {
+      "before_sha256": "d8c2be5dd79e755d3a4c2aa2cd792a2127a33c8e3d3d220b11e1d5152ee3c214",
+      "after_sha256": "6dbd2d5056f7c738ec52984481873d651482594fc8ff8e94c0dcc0ab5d63aeca"
+    },
+    "proofs/AutocatalyticCS/OneSpeciesExample.lean": {
+      "before_sha256": null,
+      "after_sha256": "b72cf9628f05365be88c14bbc6c77cfee4e34a22e2634053a758275e112967b5"
+    },
+    "Registry/P011/Challenge.lean": {
+      "before_sha256": "f66bab87a8f6419903ebb954bb2dab9c550dab38979a163358b81468d986eaae",
+      "after_sha256": "4a6c8a12b493507824216030b1b45dc9798e37fa2cae7ec374bda4fafbc6bced"
+    },
+    "Registry/P011/Solution.lean": {
+      "before_sha256": "220a5c5aace4e5dc2422fe4eb6c9f073236a67e9c344f41e72ecc96d0964aca9",
+      "after_sha256": "bd64c2bf26f5c902da260fda78bb99706c16f7b2b3896a5b2d4aa28b89b86935"
+    },
+    "entries/P011/comparator.json": {
+      "before_sha256": "98728555d6ba6a11eaa2fce521a1eced537ec97fb1a886685670a4132ae9be6d",
+      "after_sha256": "c27e9aeb8d2bc30090890e29ff4e322f8d8a7e2406949b4cfd22361b41b1fc78"
+    },
+    "papers/P011/paper.pdf": {
+      "before_sha256": "3b96bcb8668a82ca35c2b8c6d29c36ec953b79973033f7279c1dc643adf6c0d7",
+      "after_sha256": "e89d01b1ba006b2d102c36bc71ddd1313936b5a32b2621345a61ccd1b76b41d7"
+    }
+  },
+  "lean_executed": true,
+  "local_checks": "PalomarVerify (Lean 4.35.0-rc2, pinned Mathlib), user-authorized P011 Lean runs: RationalGordan, CertifiedDirectEnumeration, OneSpeciesExample and Registry.P011.Solution build with warningAsError; Registry.P011.Challenge builds; the project-constant closures of all eleven selected theorems agree between Challenge and Solution (171 constants: names, universe parameters, type and value hashes).",
+  "official_verification": "PENDING",
+  "publication": "NOT_PERFORMED",
+  "submission": "NOT_PERFORMED"
+}

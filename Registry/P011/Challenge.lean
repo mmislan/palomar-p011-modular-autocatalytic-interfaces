@@ -691,7 +691,7 @@ structure CertifiedAutocatalyticTest (Q : ReactionNetwork X R) where
       Nonempty (PositiveRationalCertificate E)
   negative : ∀ edges, test edges = false →
     ∀ E : IndexedMatching Q, E.edgeFinset = edges →
-      NegativeRationalCertificate E
+      E.species.Nonempty → NegativeRationalCertificate E
 
 def certifiedDirectCSCoreEnum (candidates : Finset (Finset (X × R)))
     (checker : CertifiedAutocatalyticTest Q) : Finset (Finset (X × R)) :=
@@ -721,4 +721,42 @@ theorem sourceDirectCSCoreEnum_exact
       IsCore (AutocatalyticEdgeSet Q) edges := by
   sorry
 
+omit [Fintype X] [Fintype R] in
+theorem certifiedAutocatalyticTest_nonempty (Q : ReactionNetwork X R) :
+    Nonempty (CertifiedAutocatalyticTest Q) := by
+  sorry
+
+omit [Fintype X] [Fintype R] in
+theorem certifiedAutocatalyticTest_rejects_empty
+    (checker : CertifiedAutocatalyticTest Q) : checker.test ∅ = false := by
+  sorry
+
+end AutocatalyticCS
+
+namespace AutocatalyticCS
+namespace OneSpeciesExample
+
+def network : ReactionNetwork Unit Unit where
+  reactant _ _ := 1
+  product _ _ := 2
+
+def anchor : IndexedMatching network where
+  card := 1
+  left _ := ()
+  right _ := ()
+  left_injective := fun i j _ => Subsingleton.elim i j
+  right_injective := fun i j _ => Subsingleton.elim i j
+  reactant_edge _ := Nat.one_pos
+
+theorem sourceDirectCSCoreEnum_example :
+    (∀ x : Unit, x ∈ [()]) ∧ (∀ r : Unit, r ∈ [()]) ∧
+    (∀ N, OrdinaryCore network N → ∃ a ∈ [anchor], a.underlying = N) ∧
+    (∀ a ∈ [anchor], SimpleGraph.Subgraph.IsUniqueMatching a.subgraph) ∧
+    Nonempty (CertifiedAutocatalyticTest network) ∧
+    IsCore (AutocatalyticEdgeSet network) {((), ())} ∧
+    ∀ checker : CertifiedAutocatalyticTest network,
+      sourceDirectCSCoreEnum network [anchor] [()] [()] checker = {{((), ())}} := by
+  sorry
+
+end OneSpeciesExample
 end AutocatalyticCS
