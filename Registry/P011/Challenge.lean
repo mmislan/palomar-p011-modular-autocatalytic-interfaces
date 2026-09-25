@@ -48,6 +48,13 @@ def N2N1Feasible (q : ℝ) : Prop :=
     (a ≠ 0 ∨ b ≠ 0 ∨ c ≠ 0 ∨ d ≠ 0) ∧
     q * (a + c) ≤ b + 4 * d ∧ q * (b + d) ≤ 4 * a + c
 
+end MAFComposition
+
+-- The column calculus is universe-polymorphic, as in its proof source.
+namespace MAFComposition
+open scoped BigOperators
+variable {ι κ ρ : Type*} [Fintype ι]
+
 def weightedColumn (p : ι → ℝ) (M : ι → κ → ℝ) (r : κ) : ℝ :=
   ∑ i, p i * M i r
 
@@ -59,6 +66,12 @@ def parallelColumns (M₁ : ι → κ → ℝ) (M₂ : ι → ρ → ℝ) :
   fun i r => Sum.elim (M₁ i) (M₂ i) r
 
 def singletonColumn (v : ι → ℝ) : ι → Unit → ℝ := fun i _ => v i
+
+end MAFComposition
+
+namespace MAFComposition
+open scoped BigOperators
+variable {ι ζ κ ρ : Type} [Fintype ι] [Fintype ζ] [Fintype κ] [Fintype ρ]
 
 structure Network (ι κ : Type) where
   input : Matrix ι κ ℝ

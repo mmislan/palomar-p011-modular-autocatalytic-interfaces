@@ -1,6 +1,6 @@
 # P011 statement preparation
 
-This paper groups literature questions 13, 14 and 15. The current 711-line
+This paper groups literature questions 13, 14 and 15. The current 724-line
 Challenge exposes statements for all three and compiles on the target toolchain.
 Compilation establishes statement well-formedness, not proof verification or
 final claim-to-literature fidelity.

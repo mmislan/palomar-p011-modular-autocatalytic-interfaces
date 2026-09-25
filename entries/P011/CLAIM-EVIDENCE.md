@@ -5,8 +5,10 @@ Source-reading review dated 2026-09-24. No Lean was executed for this review.
 P011 selects eight declarations for literature problems 13, 14 and 15 from
 [Registry/P011/Challenge.lean](../../Registry/P011/Challenge.lean). The three
 namespace groups in that one file are independent: none uses a definition from
-another. The `AutocatalyticCS` group is split into one scoped block per source
-module so that its definitions elaborate to the same terms as the Solution's
+another. The `AutocatalyticCS` group and the universe-polymorphic column
+calculus of the `MAFComposition` group are split into scoped blocks that mirror
+their source modules, so that their definitions elaborate to the same terms as
+the Solution's
 (see the Comparator alignment in
 [P011-TARGET-API-MIGRATION.json](../../preparation/P011-TARGET-API-MIGRATION.json)).
 The older alternative configuration P011A predates this alignment.

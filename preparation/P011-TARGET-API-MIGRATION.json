@@ -92,7 +92,7 @@
     }
   ],
   "static_scan_limitation": "The static deprecation scan missed uses written with a `_root_.` prefix or dot notation (three cases, fixed above).",
-  "updated_utc": "2026-09-25T10:26:48.926331+00:00",
+  "updated_utc": "2026-09-25T10:44:04.480578+00:00",
   "challenge_alignment": {
     "trigger": "First Comparator run on P011-submit-ready-r3 (official verify_entry.sh in PalomarVerify, 2026-09-25): the seven MAFComposition and DegradationControl selected statements matched; AutocatalyticCS.sourceDirectCSCoreEnum_exact did not (\"Challenge and solution theorem statement do not match\").",
     "diagnosis": "A dependency-closure dump (names, universe parameters, type and value hashes) of both environments showed that the Challenge re-typed the source definitions verbatim, but (1) six private IndexedMatching helpers get module-specific private names, (2) auto-bound universe names differed because the Challenge placed all AutocatalyticCS definitions in one variable scope, and (3) Lean's module-local match/sparse-casesOn caches made Challenge definitions reuse auxiliary constants created earlier in the same file (e.g. MAFComposition.blockColumns._sparseCasesOn_1), where each source module creates its own.",
@@ -113,9 +113,9 @@
     "challenge_change": {
       "path": "Registry/P011/Challenge.lean",
       "before_sha256": "17dd00a9a86aef46bccc6a0bf4f9edfd957e0c7158990f43f1c800cee0c71e5d",
-      "after_sha256": "e6bf825c17d336d5bbd3941a220e8d1559abac1e308c4fb16a94c96d1c46c511",
-      "change": "The AutocatalyticCS block was re-scoped into one namespace block per source module (Basic, FiniteMinimality, DirectPathPack, SourceSemantics, SourceGraphBridge, CycleToggle, and the core/enumeration modules), with the same variable declarations and opens, the same public helper names and the same options. Definition and theorem text is otherwise unchanged; the MAFComposition and DegradationControl blocks are byte-identical. 680 -> 711 lines."
+      "after_sha256": "f66bab87a8f6419903ebb954bb2dab9c550dab38979a163358b81468d986eaae",
+      "change": "The AutocatalyticCS block was re-scoped into one namespace block per source module (Basic, FiniteMinimality, DirectPathPack, SourceSemantics, SourceGraphBridge, CycleToggle, and the core/enumeration modules), with the same variable declarations and opens, the same public helper names and the same options. A second Comparator run on the resulting candidate matched all eight statements and then reported \"Const does not match\" for MAFComposition.Network.priceCone: the column calculus (weightedColumn, StrictObstruction, parallelColumns, singletonColumn) is universe-polymorphic in DualCalculus.lean but was fixed to Type in the Challenge; those four definitions now sit in their own block with the source variables {ι κ ρ : Type*} [Fintype ι]. Definition and theorem text is otherwise unchanged; the DegradationControl block is byte-identical. 680 -> 724 lines."
     },
-    "check": "In PalomarVerify (Lean 4.35.0-rc2, pinned Mathlib): Solution and Challenge build; the dependency closure of AutocatalyticCS.sourceDirectCSCoreEnum_exact has 97 constants in each environment with identical names, universe parameters, type hashes and definition-value hashes."
+    "check": "In PalomarVerify (Lean 4.35.0-rc2, pinned Mathlib): Solution and Challenge build; the project-constant closure of all eight selected theorems has 165 constants in each environment with identical names, universe parameters, type hashes and definition-value hashes."
   }
 }
