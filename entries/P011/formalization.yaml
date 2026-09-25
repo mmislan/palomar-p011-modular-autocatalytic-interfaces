@@ -46,7 +46,7 @@
       "relationship": "background",
       "id": "doi:10.48550/arXiv.2603.02627",
       "location": "https://arxiv.org/abs/2603.02627",
-      "note": "arXiv preprint arXiv:2603.02627 (2026). Introduces the maximum amplification factor for reaction networks. The companion manuscript reports that this work names composition rules for adding reactions, merging species and coupling motifs as an open direction (literature problem 13). This review did not check which section of the preprint states that direction."
+      "note": "arXiv:2603.02627v1, Discussion and outlook, paragraph beginning Pursuing this program. Explicitly asks for composition rules describing how adding reactions and merging species change the maximum amplification factor. The selected theorems give strict-increase criteria, a direct-sum rule and a scalar noncompositionality example under their stated hypotheses."
     },
     {
       "title": "Autocatalytic cores in reaction networks with explicit catalysis",
@@ -60,7 +60,7 @@
       "relationship": "background",
       "id": "doi:10.48550/arXiv.2603.02770",
       "location": "https://arxiv.org/abs/2603.02770",
-      "note": "arXiv preprint arXiv:2603.02770 [math.CO] (2026). Child-selection cores are defined in Definition 3.4, and Example 3.3 separates them from ordinary cores. Literature problem 14 asks whether the finer child-selection cores can be obtained from ordinary autocatalytic cores. This review did not check where the preprint poses that question."
+      "note": "arXiv:2603.02770v1, Section 6, final paragraphs before Section 7, and concluding discussion following Table 1. Explicitly leaves construction of a CS-core enumeration algorithm from ordinary cores open and asks about improved efficiency. The selected result gives exact enumeration conditional on complete ordinary-core anchors and unique anchor matchings, with checker existence and a nonempty instance; it does not establish a complexity improvement."
     },
     {
       "title": "Autocatalytic cores in the diluted regime: classification and properties",
@@ -73,7 +73,7 @@
       "relationship": "background",
       "id": "doi:10.1007/s00285-026-02357-7",
       "location": "https://doi.org/10.1007/s00285-026-02357-7",
-      "note": "J. Math. Biol. 92 (2026), article 36; arXiv:2507.15546. Literature problem 15: dynamical autocatalysis under arbitrary species-specific degradation."
+      "note": "arXiv:2507.15546v1, Section 6 (Discussion), paragraph beginning The kinetic viability. Identifies the absence of a general characterization of dynamical autocatalysis for arbitrary species degradation rates. The selected theorems address irreducible linear diluted source matrices and a Metzler partial-actuation certificate."
     }
   ],
   "status": {
