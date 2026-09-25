@@ -42,7 +42,7 @@
         "Yannick De Decker",
         "David Lacoste"
       ],
-      "type": "article",
+      "type": "paper",
       "relationship": "background",
       "id": "doi:10.48550/arXiv.2603.02627",
       "location": "https://arxiv.org/abs/2603.02627",
@@ -56,7 +56,7 @@
         "Peter F. Stadler",
         "Nicola Vassena"
       ],
-      "type": "article",
+      "type": "paper",
       "relationship": "background",
       "id": "doi:10.48550/arXiv.2603.02770",
       "location": "https://arxiv.org/abs/2603.02770",
@@ -69,7 +69,7 @@
         "Philippe Nghe",
         "Jérémie Unterberger"
       ],
-      "type": "article",
+      "type": "paper",
       "relationship": "background",
       "id": "doi:10.1007/s00285-026-02357-7",
       "location": "https://doi.org/10.1007/s00285-026-02357-7",
