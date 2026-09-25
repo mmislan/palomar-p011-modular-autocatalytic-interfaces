@@ -77,7 +77,7 @@ theorem semipositive_iff_exactSemipositive (A : Matrix ι ι ℚ) :
   constructor
   · rintro ⟨v, hvnonneg, _hvne, hv⟩
     refine ⟨fun i => ⟨v i, hvnonneg i⟩, ?_⟩
-    simpa using hv
+    simpa [Matrix.mulVec, dotProduct] using hv
   · rintro ⟨v, hv⟩
     refine ⟨fun i => (v i : ℚ), fun i => (v i).property, ?_, ?_⟩
     · intro hzero
@@ -85,7 +85,7 @@ theorem semipositive_iff_exactSemipositive (A : Matrix ι ι ℚ) :
       have hi := hv i
       have hvzero : ∀ j, (v j : ℚ) = 0 := fun j => congrFun hzero j
       simp [hvzero] at hi
-    · simpa using hv
+    · simpa [Matrix.mulVec, dotProduct] using hv
 
 private def nnratToNNReal (q : NNRat) : NNReal :=
   ⟨((q : ℚ) : ℝ), Rat.cast_nonneg.2 q.property⟩
@@ -135,8 +135,7 @@ theorem exactSemipositive_iff_realSemipositive (A : Matrix ι ι ℚ) :
         simp [feasible]]
       exact isOpen_iInter_of_finite fun i => isOpen_lt continuous_const (hcontinuous i)
     have hdense : DenseRange (fun q : ι → NNRat => fun j => nnratToNNReal (q j)) := by
-      simpa only [Pi.map_apply] using
-        DenseRange.piMap (fun _ : ι => denseRange_nnratCast)
+      exact DenseRange.piMap (fun _ : ι => denseRange_nnratCast)
     obtain ⟨q, hq⟩ := hdense.exists_mem_open hopen ⟨v, hv⟩
     refine ⟨q, ?_⟩
     intro i

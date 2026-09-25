@@ -58,16 +58,15 @@ This is agent-assisted source reading, not an independent human review.
 
 ## Evidence boundary
 
-- Replacement proof: `PositivePerron.lean` compiled standalone on the target
-  toolchain with warnings as errors. The edited `PerronExistence.lean` has not
-  been built, nor has the removal of a no-op `dsimp` from `Certificates.lean`.
-  The downstream degradation statements are unchanged.
-- Target API migration: uses of the deprecated finite-function `stdSimplex` API
-  and `Set.mem_setOf_eq` were replaced by file-only edits in
-  `PerronExistence.lean`, `Gordan.lean`, `Attainment.lean` and
-  `Composition.lean`
-  ([record](../../preparation/P011-TARGET-API-MIGRATION.json)). These edits
-  have not been compiled. No selected statement changed.
+- Replacement proof: `PositivePerron.lean` replaces the third-party
+  fixed-point file. The downstream degradation statements are unchanged.
+- Target API migration: deprecated Mathlib names, simp normal-form changes and
+  one style lint were repaired in ten proof files
+  ([record](../../preparation/P011-TARGET-API-MIGRATION.json)). With these
+  repairs, all 44 modules of the Solution closure built locally on Lean
+  4.35.0-rc2 with the pinned Mathlib and warnings as errors. That is a local
+  build, not the Comparator or kernel verification. No selected statement
+  changed.
 - Not selected: the pointwise price-cone identities, Prop 3.6, Thm 3.9, the
   general-λ and spectral actuation forms of Thms 5.4 and 5.5, and the
   hand-proved extensions of Remark 5.8.

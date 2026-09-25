@@ -57,10 +57,12 @@ theorem priceCone_aggregate_lift (C : Matrix ζ ι ℝ)
   refine ⟨?_, fun r => ?_⟩
   · intro i
     exact Finset.sum_nonneg fun z _ => mul_nonneg (hpnonneg z) (hC z i)
-  · have hr := hpstrict r
+  · have hr : weightedColumn p (C * N.output) r < q * weightedColumn p (C * N.input) r :=
+      hpstrict r
     change Matrix.vecMul (Matrix.vecMul p C) N.output r <
       q * Matrix.vecMul (Matrix.vecMul p C) N.input r
-    simpa [Network.aggregate, weightedColumn] using hr
+    rw [Matrix.vecMul_vecMul, Matrix.vecMul_vecMul]
+    exact hr
 
 omit [Fintype κ] in
 theorem strictPriceAt_aggregate_implies (C : Matrix ζ ι ℝ)

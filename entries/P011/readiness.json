@@ -8,7 +8,7 @@
   "historical_verification": "PASS",
   "challenge": "COMPILES_TARGET_STATEMENT_ONLY",
   "solution": "DRAFT_NOT_VERIFIED",
-  "target_compilation": "NOT_RUN",
+  "target_compilation": "LOCAL_CLOSURE_BUILD_PASS",
   "comparator": "NOT_RUN",
   "independent_kernels": "NOT_RUN",
   "statement_fidelity": "SOURCE_READ_AGENT_REVIEWED_VERIFICATION_PENDING",
@@ -28,7 +28,7 @@
   ],
   "redistribution": "THIRD_PARTY_SOURCE_REPLACED_NOT_IMPORTED",
   "redistribution_evidence": "preparation/P011-PERRON-REPLACEMENT.json",
-  "disposition": "PREPARED_ALL_THREE_PROBLEMS_REPLACEMENT_AND_API_MIGRATION_NOT_COMPILED",
+  "disposition": "PREPARED_ALL_THREE_PROBLEMS_SOLUTION_CLOSURE_BUILT_LOCALLY",
   "split_entry": "entries/P011A",
   "claim_evidence": "entries/P011/CLAIM-EVIDENCE.md",
   "api_migration_evidence": "preparation/P011-TARGET-API-MIGRATION.json"

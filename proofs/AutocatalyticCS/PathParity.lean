@@ -100,8 +100,7 @@ theorem exchangePath_has_external_opposite_endpoints {X R : Type*}
   have hne : u ≠ v := by
     intro huv
     subst v
-    exact hnon (_root_.SimpleGraph.Walk.eq_nil_iff_nil.mp
-      ((_root_.SimpleGraph.Walk.isPath_iff_eq_nil p).mp hp))
+    exact hnon (_root_.SimpleGraph.Walk.isPath_iff_nil.mp hp)
   obtain ⟨x, hux, q, hpq⟩ :=
     _root_.SimpleGraph.Walk.exists_eq_cons_of_ne hne p
   subst p

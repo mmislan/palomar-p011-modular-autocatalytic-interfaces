@@ -444,7 +444,7 @@ theorem sourceTargetExchangePack_pairwise_disjoint
     have hpq : (⟨p, hp⟩ :
         (anchor.subgraph.spanningCoe ∆ target.subgraph.spanningCoe).Path
           (Sum.inl x) (Sum.inr r)) = ⟨q, hq⟩ :=
-      hprofile.1.1.path_unique _ _
+      (hprofile.1.1.subsingleton_path _ _).elim _ _
     exact congrArg (fun z => z.val.support) hpq
   change pack.Pairwise fun p q => Disjoint p.toFinset q.toFinset
   rw [List.pairwise_iff_getElem]

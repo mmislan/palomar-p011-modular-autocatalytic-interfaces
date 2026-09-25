@@ -39,7 +39,7 @@ theorem SimpleGraph.IsTree.exists_other_degree_one
     (hT : G.IsTree) (s : V) (hs : G.degree s = 1)
     (hmax : ∀ v, G.degree v ≤ 2) :
     ∃ t, t ≠ s ∧ G.degree t = 1 := by
-  haveI : Nontrivial V := by
+  have : Nontrivial V := by
     rw [degree_eq_one_iff_existsUnique_adj] at hs
     obtain ⟨w, hsw, _⟩ := hs
     exact ⟨⟨s, w, hsw.ne⟩⟩
@@ -94,8 +94,8 @@ theorem SimpleGraph.IsAlternatingPathPack.exists_path_to_other_external
     ∃ t, t ≠ s ∧ t ∉ inner ∧ ∃ p : P.Walk s t, p.IsPath := by
   classical
   let c := P.connectedComponentMk s
-  letI : Fintype c := Fintype.ofFinite c
-  letI : DecidableRel c.toSimpleGraph.Adj := Classical.decRel _
+  let : Fintype c := Fintype.ofFinite c
+  let : DecidableRel c.toSimpleGraph.Adj := Classical.decRel _
   let s' : c := ⟨s, by
     exact ConnectedComponent.connectedComponentMk_mem⟩
   have hsone : c.toSimpleGraph.degree s' = 1 := by
@@ -125,8 +125,7 @@ theorem SimpleGraph.IsAlternatingPathPack.exists_path_to_other_external
   refine ⟨t'.1, ?_, htext, p.map c.toSimpleGraph_hom, ?_⟩
   · intro h
     exact hts (Subtype.ext h)
-  · exact _root_.SimpleGraph.Walk.map_isPath_of_injective
-      Subtype.val_injective hp
+  · exact _root_.SimpleGraph.Walk.IsPath.map Subtype.val_injective hp
 
 /-- An internal vertex of a simple path cannot have a unique neighbor in the
 ambient graph: its predecessor and successor are distinct ambient neighbors. -/
@@ -232,9 +231,9 @@ theorem SimpleGraph.IsExternalBipartitePathPack.exists_path_covering_adj
         p.toSubgraph.Adj a b := by
   classical
   let c := P.connectedComponentMk a
-  letI : Fintype c := Fintype.ofFinite c
-  letI : DecidableRel c.toSimpleGraph.Adj := Classical.decRel _
-  haveI : Nontrivial c := by
+  let : Fintype c := Fintype.ofFinite c
+  let : DecidableRel c.toSimpleGraph.Adj := Classical.decRel _
+  have : Nontrivial c := by
     refine ⟨⟨⟨a, ConnectedComponent.connectedComponentMk_mem⟩,
       ⟨b, (c.mem_supp_congr_adj hab).mp
         ConnectedComponent.connectedComponentMk_mem⟩, ?_⟩⟩

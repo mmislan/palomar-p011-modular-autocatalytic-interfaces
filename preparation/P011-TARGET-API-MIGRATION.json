@@ -1,5 +1,5 @@
 {
-  "kind": "STATIC_TARGET_API_MIGRATION_NOT_COMPILED",
+  "kind": "TARGET_API_MIGRATION_LOCALLY_COMPILED",
   "entry": "P011",
   "also_affects": [
     "P011A (shares proofs/MAFComposition/*)"
@@ -7,7 +7,7 @@
   "created_utc": "2026-09-24T23:16:16.025221+00:00",
   "author": "Michael Mislan",
   "license": "Apache-2.0",
-  "lean_executed": false,
+  "lean_executed": true,
   "method": "File-only. Deprecated declarations were found by scanning every @[deprecated] declaration in the pinned Mathlib (065356127b1d), Batteries and Lean v4.35.0-rc2 Init/Std sources and matching them against the 45-module P011 Solution closure; qualified and unqualified lemma names were also checked for existence in those sources. The lakefile sets warningAsError, so each deprecated use would fail the build.",
   "findings": {
     "deprecated_declarations_in_closure": [
@@ -47,9 +47,50 @@
   "unchanged_but_pending": {
     "proofs/DegradationControl/Certificates.lean": "62013e957a089226eb2d86995168e02de4b02055a2b277123440b9e0348427df (no-op dsimp removal recorded in P011-PERRON-REPLACEMENT.json; not rebuilt)"
   },
-  "compile_status": "NOT COMPILED. Static checks cannot detect simp normal-form or elaboration changes; the P006 and P012 migrations needed several such compile-driven repairs. 38 of the 45 closure modules have never been built on the target toolchain (all 12 MAFComposition, 15 of 16 DegradationControl, 11 of 16 AutocatalyticCS; PositivePerron and the five AutocatalyticCS modules shared with P003 have).",
+  "compile_status": "Local Windows build, Lean v4.35.0-rc2, pinned Mathlib, warningAsError: all 44 modules of the P011 Solution closure build (sequential single-module lake builds; logs .local/p011-build-logs/). Four passes; failures were only the target-API/simp-normal-form issues listed in compile_driven_changes. No selected statement changed. This is a local build, not the official verifier, Comparator or kernel replay.",
   "frozen_candidates_affected": [
     "P011-submit-ready (superseded by P011-submit-ready-r2)",
     "P011A-submit-ready (its MAFComposition sources still carry the deprecated uses)"
-  ]
+  ],
+  "user_authorization": "User instruction on 2026-09-24 to run Lean for P011 (overrides the AGENTS.md prohibition for this task only).",
+  "compile_driven_changes": [
+    {
+      "path": "proofs/MAFComposition/Aggregation.lean",
+      "before_sha256": "ef28cc2eb7d48424583e04f5681e2a3c5ab98da6a9ca91893ff6db55060e9f28",
+      "after_sha256": "56d8d1a0238b545e28870290e80de83085ef9dbbae1c303ce3d0757db5dacbf6",
+      "change": "priceCone_aggregate_lift: simp no longer unfolds vecMul consistently on both sides; fold the goal with Matrix.vecMul_vecMul and close by the definitional weightedColumn hypothesis."
+    },
+    {
+      "path": "proofs/MAFComposition/ReactionEdit.lean",
+      "before_sha256": "f814c004e579b2023184cfb777116d38679145b4e31ec1bfb1f2cf1e33785155",
+      "after_sha256": "2d04f26d0859895441c7e955806e34f84433b4d95e14b7e895f7ad38fc677e31",
+      "change": "inputNonnegative_addReaction: simp no longer reduces parallelColumns on Sum.inr; the goal is definitionally `0 ≤ a i`, closed by `exact ha i`."
+    },
+    {
+      "path": "proofs/AutocatalyticCS/PathParity.lean",
+      "before_sha256": "69d7cb2fb33bd55d753a0506fc0f546e9209aa3dd34ded90a9b810077890b90e",
+      "after_sha256": "6d2c60bc543f715f3fad132e2d561ea2c7d9758864a4b374ffd0d1b0d445ff51",
+      "change": "Deprecated SimpleGraph.Walk.isPath_iff_eq_nil (+eq_nil_iff_nil) replaced by SimpleGraph.Walk.isPath_iff_nil."
+    },
+    {
+      "path": "proofs/AutocatalyticCS/ExactSemipositivity.lean",
+      "before_sha256": "0720626e775017a04088b8e683ae0109a8917ddc089f612633dcd006f228b32d",
+      "after_sha256": "263c1f5073cf4acdf628d500916c8158c4b81574435f47d6804817b72d7f311d",
+      "change": "Two simpa calls now unfold Matrix.mulVec/dotProduct explicitly (simp normal form changed); DenseRange.piMap used by `exact` (Pi.map is definitionally the lambda)."
+    },
+    {
+      "path": "proofs/AutocatalyticCS/FinitePathForest.lean",
+      "before_sha256": "9558f7343f978a6bc689443ba424b091b2778a546809e42d99de24b918b5f470",
+      "after_sha256": "309bc878c1e14725aa97d88448569e3da3249cc8642f99ce248dc858ee725a77",
+      "change": "Deprecated map_isPath_of_injective -> IsPath.map; six proposition-local haveI/letI -> have/let (linter.style.haveILetI, as in the P006 migration)."
+    },
+    {
+      "path": "proofs/AutocatalyticCS/SourcePathExtraction.lean",
+      "before_sha256": "b41971a659856b5c4a2cbc066fd04d5819fb44da6171064f16fe5a46606f28dc",
+      "after_sha256": "f57286795c93b5ec9ea1a3dcc8dfc2b27f628299a1a5f0420b713ed7243883d6",
+      "change": "Deprecated IsAcyclic.path_unique -> (IsAcyclic.subsingleton_path _ _).elim, the deprecated lemma's own body."
+    }
+  ],
+  "static_scan_limitation": "The static deprecation scan missed uses written with a `_root_.` prefix or dot notation (three cases, fixed above).",
+  "updated_utc": "2026-09-25T09:54:07.754009+00:00"
 }

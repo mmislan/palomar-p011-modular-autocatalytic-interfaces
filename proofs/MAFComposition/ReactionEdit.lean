@@ -48,8 +48,7 @@ theorem inputNonnegative_addReaction (N : Network ι κ)
   intro i r
   cases r with
   | inl r => exact hN i r
-  | inr r => simpa [Network.addReaction, Network.parallel,
-      Network.singleReaction, singletonColumn] using ha i
+  | inr r => exact ha i
 
 theorem addReaction_isMAF_same_iff_pricesAbove
     (N : Network ι κ) (hN : N.InputNonnegative)
