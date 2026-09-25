@@ -4,9 +4,12 @@ Source-reading review dated 2026-09-24. No Lean was executed for this review.
 
 P011 selects eight declarations for literature problems 13, 14 and 15 from
 [Registry/P011/Challenge.lean](../../Registry/P011/Challenge.lean). The three
-namespace blocks in that one file are independent: none uses a definition from
-another block. The problem 13 and 14 declarations are also packaged separately
-as the alternative configuration P011A, with statements copied byte for byte.
+namespace groups in that one file are independent: none uses a definition from
+another. The `AutocatalyticCS` group is split into one scoped block per source
+module so that its definitions elaborate to the same terms as the Solution's
+(see the Comparator alignment in
+[P011-TARGET-API-MIGRATION.json](../../preparation/P011-TARGET-API-MIGRATION.json)).
+The older alternative configuration P011A predates this alignment.
 **Problem 15 fixed-point dependency replaced (2026-09-24).** The Solution path
 previously reached `External.SchauderFixedPoint`, a third-party source with an
 unresolved license. Its only use was `positiveMatrix_exists_normalizedPositive_eigenvector`
@@ -61,12 +64,11 @@ This is agent-assisted source reading, not an independent human review.
 - Replacement proof: `PositivePerron.lean` replaces the third-party
   fixed-point file. The downstream degradation statements are unchanged.
 - Target API migration: deprecated Mathlib names, simp normal-form changes and
-  one style lint were repaired in ten proof files
-  ([record](../../preparation/P011-TARGET-API-MIGRATION.json)). With these
-  repairs, all 44 modules of the Solution closure built locally on Lean
-  4.35.0-rc2 with the pinned Mathlib and warnings as errors. That is a local
-  build, not the Comparator or kernel verification. No selected statement
-  changed.
+  one style lint were repaired in ten proof files, and two AutocatalyticCS
+  files were adjusted for the Comparator alignment
+  ([record](../../preparation/P011-TARGET-API-MIGRATION.json)). The whole
+  Solution closure builds on Lean 4.35.0-rc2 with the pinned Mathlib and
+  warnings as errors. No selected statement changed.
 - Not selected: the pointwise price-cone identities, Prop 3.6, Thm 3.9, the
   general-λ and spectral actuation forms of Thms 5.4 and 5.5, and the
   hand-proved extensions of Remark 5.8.

@@ -30,25 +30,25 @@ def species (E : IndexedMatching Q) : Finset X :=
 def reactions (E : IndexedMatching Q) : Finset R :=
   Finset.univ.image E.right
 
-private def leftEmbedding (E : IndexedMatching Q) : Fin E.card ↪ X :=
+def leftEmbedding (E : IndexedMatching Q) : Fin E.card ↪ X :=
   ⟨E.left, E.left_injective⟩
 
-private def rightEmbedding (E : IndexedMatching Q) : Fin E.card ↪ R :=
+def rightEmbedding (E : IndexedMatching Q) : Fin E.card ↪ R :=
   ⟨E.right, E.right_injective⟩
 
-private def leftRangeEquiv (E : IndexedMatching Q) :
+def leftRangeEquiv (E : IndexedMatching Q) :
     {x // x ∈ Set.range E.left} ≃ {x // x ∈ E.species} :=
   Equiv.subtypeEquivRight fun x => by simp [species]
 
-private def rightRangeEquiv (E : IndexedMatching Q) :
+def rightRangeEquiv (E : IndexedMatching Q) :
     {r // r ∈ Set.range E.right} ≃ {r // r ∈ E.reactions} :=
   Equiv.subtypeEquivRight fun r => by simp [reactions]
 
-private def leftIndexEquiv (E : IndexedMatching Q) :
+def leftIndexEquiv (E : IndexedMatching Q) :
     {x // x ∈ E.species} ≃ Fin E.card :=
   E.leftRangeEquiv.symm |>.trans E.leftEmbedding.toEquivRange.symm
 
-private def rightIndexEquiv (E : IndexedMatching Q) :
+def rightIndexEquiv (E : IndexedMatching Q) :
     {r // r ∈ E.reactions} ≃ Fin E.card :=
   E.rightRangeEquiv.symm |>.trans E.rightEmbedding.toEquivRange.symm
 
@@ -57,13 +57,13 @@ def assign (E : IndexedMatching Q) :
   E.leftIndexEquiv |>.trans E.rightIndexEquiv.symm
 
 omit [DecidableEq R] in
-private theorem leftIndex_symm_val (E : IndexedMatching Q) (i : Fin E.card) :
+theorem leftIndex_symm_val (E : IndexedMatching Q) (i : Fin E.card) :
     ((E.leftIndexEquiv).symm i).1 = E.left i := by
   change (E.leftEmbedding.toEquivRange i).1 = E.left i
   rfl
 
 omit [DecidableEq X] in
-private theorem rightIndex_symm_val (E : IndexedMatching Q) (i : Fin E.card) :
+theorem rightIndex_symm_val (E : IndexedMatching Q) (i : Fin E.card) :
     ((E.rightIndexEquiv).symm i).1 = E.right i := by
   change (E.rightEmbedding.toEquivRange i).1 = E.right i
   rfl
@@ -189,6 +189,7 @@ theorem IndexedMatching.assign_mem_edgeFinset
     IndexedMatching.mem_edgeList_iff]
   exact ⟨i, hleft, hright⟩
 
+set_option backward.match.sparseCases false in
 /-- Non-anchor (species-to-reaction) edges encountered along a directed
 alternating path. -/
 def forwardEdges : List (X ⊕ R) → List (X × R)
@@ -196,6 +197,7 @@ def forwardEdges : List (X ⊕ R) → List (X × R)
   | _ :: tail => forwardEdges tail
   | [] => []
 
+set_option backward.match.sparseCases false in
 /-- Anchor (reaction-to-species) edges removed by an alternating path. -/
 def backwardEdges : List (X ⊕ R) → List (X × R)
   | Sum.inr r :: Sum.inl x :: tail => (x, r) :: backwardEdges (Sum.inl x :: tail)

@@ -316,7 +316,56 @@ def Semipositive {ι : Type*} [Fintype ι] (A : Matrix ι ι ℚ) : Prop :=
 
 def ChildSelection.Autocatalytic {Q : ReactionNetwork X R} (κ : ChildSelection Q) : Prop :=
   Semipositive (fun i j => (κ.matrix i j : ℚ))
+end AutocatalyticCS
 
+namespace AutocatalyticCS
+
+variable {α : Type*} [PartialOrder α] [Finite α]
+
+def IsCore (good : α → Prop) (a : α) : Prop :=
+  good a ∧ ∀ ⦃b⦄, b < a → ¬ good b
+end AutocatalyticCS
+
+namespace AutocatalyticCS
+
+variable {V : Type*} [DecidableEq V]
+def directPathsAux (next : V → List V) (target : V → Bool) :
+    Nat → List V → V → List (List V)
+  | 0, _visited, current =>
+      if target current then [[current]] else []
+  | fuel + 1, visited, current =>
+      if target current then [[current]]
+      else
+        (next current).filter (fun successor => successor ∉ current :: visited)
+          |>.flatMap fun successor =>
+            (directPathsAux next target fuel (current :: visited) successor).map
+              (current :: ·)
+
+def directPaths [Fintype V] (next : V → List V) (target : V → Bool)
+    (start : V) : List (List V) :=
+  directPathsAux next target (Fintype.card V) [] start
+
+def directBoundaryPaths [Fintype V] (next : V → List V) (target : V → Bool)
+    (starts : List V) : List (List V) :=
+  starts.flatMap (directPaths next target)
+
+def OrderedPathCompatible (p : List V) (pack : List (List V)) : Bool :=
+  pack.all fun q => decide (Disjoint p.toFinset q.toFinset)
+
+def directOrderedPathPacks : List (List V) → List (List (List V))
+  | [] => [[]]
+  | p :: paths =>
+      let rest := directOrderedPathPacks paths
+      rest ++ (rest.filter (OrderedPathCompatible p)).map (p :: ·)
+
+def directBoundaryPathPacks [Fintype V] (next : V → List V)
+    (target : V → Bool) (starts : List V) : List (List (List V)) :=
+  directOrderedPathPacks (directBoundaryPaths next target starts)
+end AutocatalyticCS
+
+namespace AutocatalyticCS
+
+variable {X R : Type*} [DecidableEq X] [DecidableEq R]
 variable {Q : ReactionNetwork X R}
 structure IndexedMatching (Q : ReactionNetwork X R) where
   card : Nat
@@ -334,25 +383,25 @@ def species (E : IndexedMatching Q) : Finset X :=
 def reactions (E : IndexedMatching Q) : Finset R :=
   Finset.univ.image E.right
 
-private def leftEmbedding (E : IndexedMatching Q) : Fin E.card ↪ X :=
+def leftEmbedding (E : IndexedMatching Q) : Fin E.card ↪ X :=
   ⟨E.left, E.left_injective⟩
 
-private def rightEmbedding (E : IndexedMatching Q) : Fin E.card ↪ R :=
+def rightEmbedding (E : IndexedMatching Q) : Fin E.card ↪ R :=
   ⟨E.right, E.right_injective⟩
 
-private def leftRangeEquiv (E : IndexedMatching Q) :
+def leftRangeEquiv (E : IndexedMatching Q) :
     {x // x ∈ Set.range E.left} ≃ {x // x ∈ E.species} :=
   Equiv.subtypeEquivRight fun x => by simp [species]
 
-private def rightRangeEquiv (E : IndexedMatching Q) :
+def rightRangeEquiv (E : IndexedMatching Q) :
     {r // r ∈ Set.range E.right} ≃ {r // r ∈ E.reactions} :=
   Equiv.subtypeEquivRight fun r => by simp [reactions]
 
-private def leftIndexEquiv (E : IndexedMatching Q) :
+def leftIndexEquiv (E : IndexedMatching Q) :
     {x // x ∈ E.species} ≃ Fin E.card :=
   E.leftRangeEquiv.symm |>.trans E.leftEmbedding.toEquivRange.symm
 
-private def rightIndexEquiv (E : IndexedMatching Q) :
+def rightIndexEquiv (E : IndexedMatching Q) :
     {r // r ∈ E.reactions} ≃ Fin E.card :=
   E.rightRangeEquiv.symm |>.trans E.rightEmbedding.toEquivRange.symm
 
@@ -361,13 +410,13 @@ def assign (E : IndexedMatching Q) :
   E.leftIndexEquiv |>.trans E.rightIndexEquiv.symm
 
 omit [DecidableEq R] in
-private theorem leftIndex_symm_val (E : IndexedMatching Q) (i : Fin E.card) :
+theorem leftIndex_symm_val (E : IndexedMatching Q) (i : Fin E.card) :
     ((E.leftIndexEquiv).symm i).1 = E.left i := by
   change (E.leftEmbedding.toEquivRange i).1 = E.left i
   rfl
 
 omit [DecidableEq X] in
-private theorem rightIndex_symm_val (E : IndexedMatching Q) (i : Fin E.card) :
+theorem rightIndex_symm_val (E : IndexedMatching Q) (i : Fin E.card) :
     ((E.rightIndexEquiv).symm i).1 = E.right i := by
   change (E.rightEmbedding.toEquivRange i).1 = E.right i
   rfl
@@ -433,48 +482,15 @@ def IndexedMatching.edgeList (E : IndexedMatching Q) : List (X × R) :=
 
 def IndexedMatching.edgeFinset (E : IndexedMatching Q) : Finset (X × R) :=
   E.edgeList.toFinset
-
-section Paths
-variable {V : Type*} [DecidableEq V]
-def directPathsAux (next : V → List V) (target : V → Bool) :
-    Nat → List V → V → List (List V)
-  | 0, _visited, current =>
-      if target current then [[current]] else []
-  | fuel + 1, visited, current =>
-      if target current then [[current]]
-      else
-        (next current).filter (fun successor => successor ∉ current :: visited)
-          |>.flatMap fun successor =>
-            (directPathsAux next target fuel (current :: visited) successor).map
-              (current :: ·)
-
-def directPaths [Fintype V] (next : V → List V) (target : V → Bool)
-    (start : V) : List (List V) :=
-  directPathsAux next target (Fintype.card V) [] start
-
-def directBoundaryPaths [Fintype V] (next : V → List V) (target : V → Bool)
-    (starts : List V) : List (List V) :=
-  starts.flatMap (directPaths next target)
-
-def OrderedPathCompatible (p : List V) (pack : List (List V)) : Bool :=
-  pack.all fun q => decide (Disjoint p.toFinset q.toFinset)
-
-def directOrderedPathPacks : List (List V) → List (List (List V))
-  | [] => [[]]
-  | p :: paths =>
-      let rest := directOrderedPathPacks paths
-      rest ++ (rest.filter (OrderedPathCompatible p)).map (p :: ·)
-
-def directBoundaryPathPacks [Fintype V] (next : V → List V)
-    (target : V → Bool) (starts : List V) : List (List (List V)) :=
-  directOrderedPathPacks (directBoundaryPaths next target starts)
-
-end Paths
+-- `backward.match.sparseCases false` is set exactly as in the proof sources, so
+-- these definitions elaborate to the same terms there and here.
+set_option backward.match.sparseCases false in
 def forwardEdges : List (X ⊕ R) → List (X × R)
   | Sum.inl x :: Sum.inr r :: tail => (x, r) :: forwardEdges (Sum.inr r :: tail)
   | _ :: tail => forwardEdges tail
   | [] => []
 
+set_option backward.match.sparseCases false in
 def backwardEdges : List (X ⊕ R) → List (X × R)
   | Sum.inr r :: Sum.inl x :: tail => (x, r) :: backwardEdges (Sum.inl x :: tail)
   | _ :: tail => backwardEdges tail
@@ -496,6 +512,7 @@ def buildPathPackCandidate? (Q : ReactionNetwork X R) (anchor : IndexedMatching 
   if h : matchingEdgesValid Q (toggledEdges anchor pack) = true then
     some (IndexedMatching.ofValidEdges Q (toggledEdges anchor pack) h)
   else none
+section ConcreteSearch
 
 def sourceExchangeNext (Q : ReactionNetwork X R) (anchor : IndexedMatching Q)
     (reactionOrder : List R) :
@@ -532,7 +549,18 @@ def sourceCandidateEdgeFinsets [Fintype X] [Fintype R]
     List (Finset (X × R)) :=
   (sourceCandidates Q anchor speciesOrder reactionOrder).map
     IndexedMatching.edgeFinset
+end ConcreteSearch
 
+end AutocatalyticCS
+
+namespace AutocatalyticCS
+
+open _root_.SimpleGraph
+
+variable {X R : Type*} [DecidableEq X] [DecidableEq R]
+variable {Q : ReactionNetwork X R}
+
+set_option backward.match.sparseCases false in
 def reactantGraph (Q : ReactionNetwork X R) : _root_.SimpleGraph (X ⊕ R) where
   Adj u v := match u, v with
     | Sum.inl x, Sum.inr r => 0 < Q.reactant x r
@@ -541,10 +569,9 @@ def reactantGraph (Q : ReactionNetwork X R) : _root_.SimpleGraph (X ⊕ R) where
   symm := ⟨by intro u v; cases u <;> cases v <;> simp_all⟩
   loopless := ⟨by rintro (x | r) h <;> exact h⟩
 
+set_option backward.match.sparseCases false in
 def IndexedMatching.subgraph (E : IndexedMatching Q) : (reactantGraph Q).Subgraph where
-  verts v := match v with
-    | Sum.inl x => x ∈ E.species
-    | Sum.inr r => r ∈ E.reactions
+  verts := Sum.elim (fun x => x ∈ E.species) (fun r => r ∈ E.reactions)
   Adj u v := match u, v with
     | Sum.inl x, Sum.inr r => ∃ i, E.left i = x ∧ E.right i = r
     | Sum.inr r, Sum.inl x => ∃ i, E.left i = x ∧ E.right i = r
@@ -585,6 +612,9 @@ def IndexedMatching.subgraph (E : IndexedMatching Q) : (reactantGraph Q).Subgrap
     intro u v h
     cases u <;> cases v <;> exact h⟩
 
+end AutocatalyticCS
+
+namespace AutocatalyticCS
 namespace SimpleGraph
 open _root_.SimpleGraph
 variable {V : Type*} {A : _root_.SimpleGraph V}
@@ -592,13 +622,14 @@ def Subgraph.IsUniqueMatching (M : A.Subgraph) : Prop :=
   M.IsMatching ∧ ∀ N : A.Subgraph, N.IsMatching → N.verts = M.verts → N = M
 
 end SimpleGraph
-section Minimality
-variable {α : Type*} [PartialOrder α] [Finite α]
-def IsCore (good : α → Prop) (a : α) : Prop :=
-  good a ∧ ∀ ⦃b⦄, b < a → ¬ good b
+end AutocatalyticCS
 
-end Minimality
-variable [Fintype X] [Fintype R]
+namespace AutocatalyticCS
+
+variable {X R : Type*} [Fintype X] [Fintype R]
+variable [DecidableEq X] [DecidableEq R]
+variable {Q : ReactionNetwork X R}
+
 abbrev Subnetwork (X R : Type*) := Finset X × Finset R
 
 def IndexedMatching.underlying (E : IndexedMatching Q) : Subnetwork X R :=

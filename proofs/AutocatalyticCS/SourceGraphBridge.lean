@@ -11,6 +11,7 @@ open scoped symmDiff
 variable {X R : Type*} [DecidableEq X] [DecidableEq R]
 variable {Q : ReactionNetwork X R}
 
+set_option backward.match.sparseCases false in
 def reactantGraph (Q : ReactionNetwork X R) : _root_.SimpleGraph (X ⊕ R) where
   Adj u v := match u, v with
     | Sum.inl x, Sum.inr r => 0 < Q.reactant x r
@@ -19,10 +20,9 @@ def reactantGraph (Q : ReactionNetwork X R) : _root_.SimpleGraph (X ⊕ R) where
   symm := ⟨by intro u v; cases u <;> cases v <;> simp_all⟩
   loopless := ⟨by rintro (x | r) h <;> exact h⟩
 
+set_option backward.match.sparseCases false in
 def IndexedMatching.subgraph (E : IndexedMatching Q) : (reactantGraph Q).Subgraph where
-  verts v := match v with
-    | Sum.inl x => x ∈ E.species
-    | Sum.inr r => r ∈ E.reactions
+  verts := Sum.elim (fun x => x ∈ E.species) (fun r => r ∈ E.reactions)
   Adj u v := match u, v with
     | Sum.inl x, Sum.inr r => ∃ i, E.left i = x ∧ E.right i = r
     | Sum.inr r, Sum.inl x => ∃ i, E.left i = x ∧ E.right i = r

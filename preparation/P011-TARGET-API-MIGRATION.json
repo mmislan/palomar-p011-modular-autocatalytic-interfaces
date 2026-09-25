@@ -92,5 +92,30 @@
     }
   ],
   "static_scan_limitation": "The static deprecation scan missed uses written with a `_root_.` prefix or dot notation (three cases, fixed above).",
-  "updated_utc": "2026-09-25T09:54:07.754009+00:00"
+  "updated_utc": "2026-09-25T10:26:48.926331+00:00",
+  "challenge_alignment": {
+    "trigger": "First Comparator run on P011-submit-ready-r3 (official verify_entry.sh in PalomarVerify, 2026-09-25): the seven MAFComposition and DegradationControl selected statements matched; AutocatalyticCS.sourceDirectCSCoreEnum_exact did not (\"Challenge and solution theorem statement do not match\").",
+    "diagnosis": "A dependency-closure dump (names, universe parameters, type and value hashes) of both environments showed that the Challenge re-typed the source definitions verbatim, but (1) six private IndexedMatching helpers get module-specific private names, (2) auto-bound universe names differed because the Challenge placed all AutocatalyticCS definitions in one variable scope, and (3) Lean's module-local match/sparse-casesOn caches made Challenge definitions reuse auxiliary constants created earlier in the same file (e.g. MAFComposition.blockColumns._sparseCasesOn_1), where each source module creates its own.",
+    "source_changes": [
+      {
+        "path": "proofs/AutocatalyticCS/SourceSemantics.lean",
+        "before_sha256": "96a0c2deb445463cb9020f59c8c17bf19a815b70ca246666cf173127bd4b504b",
+        "after_sha256": "d1bba364c21a325679595487236d1eca727ea4ffd1b322fc2deef7cb9b67f5f3",
+        "change": "Eight IndexedMatching helpers (leftEmbedding, rightEmbedding, left/rightRangeEquiv, left/rightIndexEquiv, left/rightIndex_symm_val) made public; `set_option backward.match.sparseCases false in` on forwardEdges and backwardEdges. No statement changed. This file is also in the P003 closure; the frozen P003 checkout is unaffected."
+      },
+      {
+        "path": "proofs/AutocatalyticCS/SourceGraphBridge.lean",
+        "before_sha256": "ea31d8f20b62762add7561da5f377137f4ac3136c3fa2887f0a4094e147c5eb1",
+        "after_sha256": "e47e6d8efc94da443306d91c34824cc1842f30819c397552cb95ed51005c720c",
+        "change": "`set_option backward.match.sparseCases false in` on reactantGraph and IndexedMatching.subgraph; subgraph.verts written as Sum.elim instead of a match (definitionally the same predicate), so it no longer shares a matcher with sourceExchangeNext."
+      }
+    ],
+    "challenge_change": {
+      "path": "Registry/P011/Challenge.lean",
+      "before_sha256": "17dd00a9a86aef46bccc6a0bf4f9edfd957e0c7158990f43f1c800cee0c71e5d",
+      "after_sha256": "e6bf825c17d336d5bbd3941a220e8d1559abac1e308c4fb16a94c96d1c46c511",
+      "change": "The AutocatalyticCS block was re-scoped into one namespace block per source module (Basic, FiniteMinimality, DirectPathPack, SourceSemantics, SourceGraphBridge, CycleToggle, and the core/enumeration modules), with the same variable declarations and opens, the same public helper names and the same options. Definition and theorem text is otherwise unchanged; the MAFComposition and DegradationControl blocks are byte-identical. 680 -> 711 lines."
+    },
+    "check": "In PalomarVerify (Lean 4.35.0-rc2, pinned Mathlib): Solution and Challenge build; the dependency closure of AutocatalyticCS.sourceDirectCSCoreEnum_exact has 97 constants in each environment with identical names, universe parameters, type hashes and definition-value hashes."
+  }
 }
